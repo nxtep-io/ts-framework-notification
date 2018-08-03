@@ -1,13 +1,29 @@
 import * as FirebaseSDK from 'firebase-admin';
-import { Logger } from 'ts-framework';
+import { Logger } from 'ts-framework-common';
 import { BaseMessageSchema } from './../base/BaseMessage';
 import FirebaseMessage, { FirebaseMessageSchema } from './FirebaseMessage';
 import { BaseNotificationService, BaseNotificationServiceOptions } from '../base';
 
 export interface FirebaseServiceOptions extends BaseNotificationServiceOptions {
+  /**
+   * The Firebase service account object
+   */
   serviceAccount?: FirebaseSDK.ServiceAccount
+
+  /**
+   * The firebase database URL.
+   */
   databaseURL?: string
+
+  /**
+   * Debug mode flag.
+   */
   debug?: boolean
+
+  /**
+   * The logger instance for the service.
+   */
+  logger?: Logger;
 }
 
 /**
@@ -19,11 +35,13 @@ export interface FirebaseTransportOptions {
 }
 
 export default class FirebaseService extends BaseNotificationService {
-  sdk: FirebaseSDK.app.App
-  options: FirebaseServiceOptions
+  protected sdk: FirebaseSDK.app.App
+  protected options: FirebaseServiceOptions
+  protected logger: Logger;
 
   constructor(options: FirebaseServiceOptions) {
     super('FirebaseService', options);
+    this.logger = options.logger || Logger.getInstance();
 
     // Initialize the Firebase Admin SDK
     if (options.serviceAccount && options.databaseURL) {
@@ -41,7 +59,7 @@ export default class FirebaseService extends BaseNotificationService {
 
       } else if (options.verbose) {
         // In debug mode we send all messages to the console
-        Logger.warn(`${message} All messages will be sent to the console as warnings.`);
+        this.logger.warn(`${message} All messages will be sent to the console as warnings.`);
       }
     }
   }
@@ -59,7 +77,7 @@ export default class FirebaseService extends BaseNotificationService {
 
       if (this.options.debug) {
         // Logs the notification body in the console as a warning
-        Logger.warn(errorMessage, { body: JSON.stringify(data, null, 2) });
+        this.logger.warn(errorMessage, { body: JSON.stringify(data, null, 2) });
       } else {
         // Crash the service, notification could not be sent
         throw new Error(errorMessage);

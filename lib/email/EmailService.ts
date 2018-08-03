@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { Logger } from 'ts-framework';
+import { Logger } from 'ts-framework-common';
 import * as nodemailer from 'nodemailer';
 import * as Template from 'email-templates';
 import { TransportTypes } from '../types';
@@ -11,6 +11,11 @@ export interface EmailServiceOptions extends BaseNotificationServiceOptions {
    * The default sender for the emails sent by the service.
    */
   from?: string;
+
+  /**
+   * The logger instance for the service.
+   */
+  logger?: Logger;
 
   /**
    * E-mails will be sent to console whenever the connectionUrl is not available if debug is "true".
@@ -41,6 +46,7 @@ export interface EmailServiceOptions extends BaseNotificationServiceOptions {
 export default class EmailService extends BaseNotificationService {
   protected readonly transporter?: nodemailer.Transporter;
   protected readonly templateEngine?: Template;
+  protected logger: Logger;
 
   /**
    * Instantiates a new email service instance.
@@ -49,6 +55,8 @@ export default class EmailService extends BaseNotificationService {
    */
   constructor(protected readonly options: EmailServiceOptions = {}) {
     super('EmailService', options);
+    this.logger = options.logger || Logger.getInstance();
+
     if (options.transporter) {
       // Transporter instance was given to the constructor
       this.transporter = options.transporter;
@@ -64,7 +72,7 @@ export default class EmailService extends BaseNotificationService {
         throw new Error(message);
       } else if (options.verbose) {
         // In debug mode we send all messages to the console
-        Logger.warn(`${message} All messages will be sent to the console as warnings.`);
+        this.logger.warn(`${message} All messages will be sent to the console as warnings.`);
       }
     }
 
@@ -99,7 +107,7 @@ export default class EmailService extends BaseNotificationService {
       await this.transporter.verify();
       return true;
     } catch (exception) {
-      Logger.debug(exception);
+      this.logger.debug(exception);
       return false;
     }
   }
@@ -131,7 +139,7 @@ export default class EmailService extends BaseNotificationService {
 
       if (this.options.debug) {
         // Logs the email body in the console as a warning
-        Logger.warn(errorMessage, { body: JSON.stringify(data, null, 2) });
+        this.logger.warn(errorMessage, { body: JSON.stringify(data, null, 2) });
       } else {
         // Crash the service, email could not be sent
         throw new Error(errorMessage);
