@@ -1,8 +1,8 @@
 import * as FirebaseSDK from 'firebase-admin';
 import { Logger } from 'ts-framework-common';
 import { FirebaseMessageSchema } from './FirebaseMessage';
-import { BaseNotificationService, BaseNotificationServiceOptions } from '../base';
-export interface FirebaseServiceOptions extends BaseNotificationServiceOptions {
+import { NotificationService, NotificationServiceOptions } from '../base';
+export interface FirebaseServiceOptions extends NotificationServiceOptions {
     /**
      * The Firebase service account object
      */
@@ -27,10 +27,13 @@ export interface FirebaseTransportOptions {
     priority: 'normal' | 'high';
     timeToLive: number;
 }
-export default class FirebaseService extends BaseNotificationService {
+export default class FirebaseService extends NotificationService {
+    readonly options: FirebaseServiceOptions;
     protected sdk: FirebaseSDK.app.App;
-    protected options: FirebaseServiceOptions;
-    protected logger: Logger;
     constructor(options: FirebaseServiceOptions);
     send(message: FirebaseMessageSchema, options?: FirebaseTransportOptions): Promise<FirebaseSDK.messaging.MessagingDevicesResponse>;
+    onMount(): void;
+    onUnmount(): void;
+    onInit(): Promise<void>;
+    onReady(): Promise<void>;
 }

@@ -1,12 +1,12 @@
 import * as path from 'path';
-import { Logger } from 'ts-framework-common';
+import { Logger, BaseError } from 'ts-framework-common';
 import * as nodemailer from 'nodemailer';
 import * as Template from 'email-templates';
 import { TransportTypes } from '../types';
-import { BaseNotificationService, BaseNotificationServiceOptions } from '../base';
+import { NotificationService, NotificationServiceOptions } from '../base';
 import EmailMessage, { EmailMessageSchema } from './EmailMessage';
 
-export interface EmailServiceOptions extends BaseNotificationServiceOptions {
+export interface EmailServiceOptions extends NotificationServiceOptions {
   /**
    * The default sender for the emails sent by the service.
    */
@@ -43,19 +43,17 @@ export interface EmailServiceOptions extends BaseNotificationServiceOptions {
   }
 }
 
-export default class EmailService extends BaseNotificationService {
+export default class EmailService extends NotificationService {
   protected readonly transporter?: nodemailer.Transporter;
   protected readonly templateEngine?: Template;
-  protected logger: Logger;
 
   /**
    * Instantiates a new email service instance.
    * 
    * @param options The email service options
    */
-  constructor(protected readonly options: EmailServiceOptions = {}) {
-    super('EmailService', options);
-    this.logger = options.logger || Logger.getInstance();
+  constructor(public readonly options: EmailServiceOptions = {}) {
+    super(options);
 
     if (options.transporter) {
       // Transporter instance was given to the constructor
@@ -65,12 +63,12 @@ export default class EmailService extends BaseNotificationService {
       this.transporter = nodemailer.createTransport(options.connectionUrl);
     } else {
       // No transporter available, prepare message for warning or crash
-      const message = `${this.name}: The SMTP connectionUrl is not available.`;
+      const message = `${this.options.name}: The SMTP connectionUrl is not available.`;
 
       if (!options.debug) {
         // No debug mode, crash the service
-        throw new Error(message);
-      } else if (options.verbose) {
+        throw new BaseError(message);
+      } else {
         // In debug mode we send all messages to the console
         this.logger.warn(`${message} All messages will be sent to the console as warnings.`);
       }
@@ -135,15 +133,27 @@ export default class EmailService extends BaseNotificationService {
       // Send simple email using the transporter
       return this.transporter.sendMail(data);
     } else {
-      const errorMessage = `${this.name} is not ready, the SMTP connectionUrl may be invalid or unavailable`;
+      const errorMessage = `${this.options.name} is not ready, the SMTP connectionUrl may be invalid or unavailable`;
 
       if (this.options.debug) {
         // Logs the email body in the console as a warning
         this.logger.warn(errorMessage, { body: JSON.stringify(data, null, 2) });
       } else {
         // Crash the service, email could not be sent
-        throw new Error(errorMessage);
+        throw new BaseError(errorMessage);
       }
     }
+  }
+
+  onMount() {
+  }
+
+  onUnmount() {
+  }
+
+  async onInit() {
+  }
+
+  async onReady() {
   }
 }

@@ -2,9 +2,9 @@
 import { Logger } from 'ts-framework-common';
 import * as nodemailer from 'nodemailer';
 import * as Template from 'email-templates';
-import { BaseNotificationService, BaseNotificationServiceOptions } from '../base';
+import { NotificationService, NotificationServiceOptions } from '../base';
 import { EmailMessageSchema } from './EmailMessage';
-export interface EmailServiceOptions extends BaseNotificationServiceOptions {
+export interface EmailServiceOptions extends NotificationServiceOptions {
     /**
      * The default sender for the emails sent by the service.
      */
@@ -35,11 +35,10 @@ export interface EmailServiceOptions extends BaseNotificationServiceOptions {
         defaultTemplate?: string;
     };
 }
-export default class EmailService extends BaseNotificationService {
-    protected readonly options: EmailServiceOptions;
+export default class EmailService extends NotificationService {
+    readonly options: EmailServiceOptions;
     protected readonly transporter?: nodemailer.Transporter;
     protected readonly templateEngine?: Template;
-    protected logger: Logger;
     /**
      * Instantiates a new email service instance.
      *
@@ -56,4 +55,8 @@ export default class EmailService extends BaseNotificationService {
      * @param message The message options
      */
     send(message: EmailMessageSchema): Promise<any>;
+    onMount(): void;
+    onUnmount(): void;
+    onInit(): Promise<void>;
+    onReady(): Promise<void>;
 }

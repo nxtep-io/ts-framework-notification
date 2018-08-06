@@ -1,6 +1,6 @@
 {
   "name": "ts-framework-notification",
-  "version": "1.2.1",
+  "version": "2.0.0-alpha.1",
   "description": "A minimalistic web framework for TS",
   "author": "Luis Brito <luis@devnup.com>",
   "license": "MIT",
@@ -31,7 +31,7 @@
     "firebase-admin": "^5.7.0",
     "nodemailer": "^4.4.0",
     "rimraf": "^2.6.2",
-    "ts-framework-common": "nxtep-io/ts-framework-common"
+    "ts-framework-common": "nxtep-io/ts-framework-common#v2"
   },
   "devDependencies": {
     "@types/jest": "^21.1.2",

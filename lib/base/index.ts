@@ -1,11 +1,9 @@
-import { default as BaseService, BaseServiceOptions } from './BaseService';
-import { default as BaseNotificationService, BaseNotificationServiceOptions } from './BaseNotificationService';
+import { default as NotificationService, NotificationServiceOptions } from './NotificationService';
 import { default as BaseMessage, BaseMessageSchema } from './BaseMessage';
 
 export {
-  BaseService, BaseServiceOptions,
-  BaseNotificationService, BaseNotificationServiceOptions,
+  NotificationService, NotificationServiceOptions,
   BaseMessage, BaseMessageSchema
 }
 
-export default { BaseService, BaseNotificationService, BaseMessage }
+export default { NotificationService, BaseMessage }

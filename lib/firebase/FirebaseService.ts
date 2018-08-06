@@ -1,10 +1,10 @@
 import * as FirebaseSDK from 'firebase-admin';
-import { Logger } from 'ts-framework-common';
+import { Logger, BaseError } from 'ts-framework-common';
 import { BaseMessageSchema } from './../base/BaseMessage';
 import FirebaseMessage, { FirebaseMessageSchema } from './FirebaseMessage';
-import { BaseNotificationService, BaseNotificationServiceOptions } from '../base';
+import { NotificationService, NotificationServiceOptions } from '../base';
 
-export interface FirebaseServiceOptions extends BaseNotificationServiceOptions {
+export interface FirebaseServiceOptions extends NotificationServiceOptions {
   /**
    * The Firebase service account object
    */
@@ -34,14 +34,11 @@ export interface FirebaseTransportOptions {
   timeToLive: number
 }
 
-export default class FirebaseService extends BaseNotificationService {
+export default class FirebaseService extends NotificationService {
   protected sdk: FirebaseSDK.app.App
-  protected options: FirebaseServiceOptions
-  protected logger: Logger;
 
-  constructor(options: FirebaseServiceOptions) {
-    super('FirebaseService', options);
-    this.logger = options.logger || Logger.getInstance();
+  constructor(public readonly options: FirebaseServiceOptions) {
+    super(options);
 
     // Initialize the Firebase Admin SDK
     if (options.serviceAccount && options.databaseURL) {
@@ -51,13 +48,13 @@ export default class FirebaseService extends BaseNotificationService {
       });
     } else {
       // No transporter available, prepare message for warning or crash
-      const message = `${this.name}: The Google Service Account is not available.`;
+      const message = `${this.options.name}: The Google Service Account is not available.`;
 
       if (!options.debug) {
         // No debug mode, crash the service
-        throw new Error(message);
+        throw new BaseError(message);
 
-      } else if (options.verbose) {
+      } else {
         // In debug mode we send all messages to the console
         this.logger.warn(`${message} All messages will be sent to the console as warnings.`);
       }
@@ -73,7 +70,7 @@ export default class FirebaseService extends BaseNotificationService {
       const { registrationToken, ...payload } = data;
       return this.sdk.messaging().sendToDevice(registrationToken, { notification: payload }, options)
     } else {
-      const errorMessage = `${this.name} is not ready, the Google Service Account may be invalid or unavailable`;
+      const errorMessage = `${this.options.name} is not ready, the Google Service Account may be invalid or unavailable`;
 
       if (this.options.debug) {
         // Logs the notification body in the console as a warning
@@ -84,5 +81,12 @@ export default class FirebaseService extends BaseNotificationService {
       }
     }
   }
-
+  onMount() {
+  }
+  onUnmount() {
+  }
+  async onInit() {
+  }
+  async onReady() {
+  }
 }

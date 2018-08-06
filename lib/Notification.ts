@@ -1,15 +1,14 @@
 import { TransportTypes } from './types';
-import { BaseNotificationService, BaseNotificationServiceOptions } from "./base";
+import { NotificationService, NotificationServiceOptions } from "./base";
 import { Email, EmailMessage, EmailMessageSchema, EmailServiceOptions } from './email';
 import { Firebase, FirebaseMessage, FirebaseMessageSchema, FirebaseServiceOptions } from './firebase';
 
-export interface NotificationOptions extends BaseNotificationServiceOptions {
+export interface NotificationOptions extends NotificationServiceOptions {
   firebase?: FirebaseServiceOptions
   email?: EmailServiceOptions
 }
 
-export default class Notification extends BaseNotificationService {
-  options: NotificationOptions
+export default class Notification extends NotificationService {
   transports: {
     email?: Email
     firebase?: Firebase
@@ -18,8 +17,8 @@ export default class Notification extends BaseNotificationService {
   static EmailMessage = EmailMessage;
   static FirebaseMessage = FirebaseMessage;
 
-  constructor(options: NotificationOptions) {
-    super('NotificationService', options);
+  constructor(public readonly options: NotificationOptions) {
+    super(options);
     this.transports = {};
 
     // At least one transport must be supplied to use this abstraction layer
@@ -50,8 +49,16 @@ export default class Notification extends BaseNotificationService {
     } else if (this.transports.firebase && message instanceof FirebaseMessage) {
       return this.transports.firebase.send(message, options);
     } else {
-      throw new Error(`${this.name}: Transport not available or misconfigured: "${message._type}"`);
+      throw new Error(`${this.options.name}: Transport not available or misconfigured: "${message._type}"`);
     }
   }
 
+  onMount() {
+  }
+  onUnmount() {
+  }
+  async onInit() {
+  }
+  async onReady() {
+  }
 }
