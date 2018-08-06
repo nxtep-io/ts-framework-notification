@@ -3660,6 +3660,10 @@ number-is-nan@^1.0.0:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/nwmatcher/-/nwmatcher-1.4.3.tgz#64348e3b3d80f035b40ac11563d278f8b72db89c"
 
+nxtep-typedoc-theme@nxtep-io/nxtep-typedoc-theme#master:
+  version "0.0.7"
+  resolved "https://codeload.github.com/nxtep-io/nxtep-typedoc-theme/tar.gz/153933e11d0d7e10b768f4aec76111c954c76063"
+
 oauth-sign@~0.8.1, oauth-sign@~0.8.2:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.8.2.tgz#46a6ab7f0aead8deae9ec0565780b7d4efeb9d43"
@@ -4905,9 +4909,9 @@ trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
 
-ts-framework-common@nxtep-io/ts-framework-common#v2:
-  version "2.0.0"
-  resolved "https://codeload.github.com/nxtep-io/ts-framework-common/tar.gz/7452efceb1e0e4f5f5475176961a5b0eedc6781c"
+ts-framework-common@nxtep-io/ts-framework-common#2.0.1:
+  version "2.0.1"
+  resolved "https://codeload.github.com/nxtep-io/ts-framework-common/tar.gz/fc8d96f45c01f673aafd85bc935067cea85266e7"
   dependencies:
     "@types/express" "^4.16.0"
     "@types/raven" "^2.5.1"
