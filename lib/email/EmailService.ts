@@ -1,16 +1,20 @@
-import * as path from 'path';
-import { Logger } from 'ts-framework';
-import * as nodemailer from 'nodemailer';
 import * as Template from 'email-templates';
-import { TransportTypes } from '../types';
-import { BaseNotificationService, BaseNotificationServiceOptions } from '../base';
+import * as nodemailer from 'nodemailer';
+import * as path from 'path';
+import { BaseError, LoggerInstance } from 'ts-framework-common';
+import { NotificationService, NotificationServiceOptions } from '../base';
 import EmailMessage, { EmailMessageSchema } from './EmailMessage';
 
-export interface EmailServiceOptions extends BaseNotificationServiceOptions {
+export interface EmailServiceOptions extends NotificationServiceOptions {
   /**
    * The default sender for the emails sent by the service.
    */
   from?: string;
+
+  /**
+   * The logger instance for the service.
+   */
+  logger?: LoggerInstance;
 
   /**
    * E-mails will be sent to console whenever the connectionUrl is not available if debug is "true".
@@ -38,7 +42,7 @@ export interface EmailServiceOptions extends BaseNotificationServiceOptions {
   }
 }
 
-export default class EmailService extends BaseNotificationService {
+export default class EmailService extends NotificationService {
   protected readonly transporter?: nodemailer.Transporter;
   protected readonly templateEngine?: Template;
 
@@ -47,8 +51,9 @@ export default class EmailService extends BaseNotificationService {
    * 
    * @param options The email service options
    */
-  constructor(protected readonly options: EmailServiceOptions = {}) {
-    super('EmailService', options);
+  constructor(public readonly options: EmailServiceOptions = {}) {
+    super(options);
+
     if (options.transporter) {
       // Transporter instance was given to the constructor
       this.transporter = options.transporter;
@@ -57,14 +62,14 @@ export default class EmailService extends BaseNotificationService {
       this.transporter = nodemailer.createTransport(options.connectionUrl);
     } else {
       // No transporter available, prepare message for warning or crash
-      const message = `${this.name}: The SMTP connectionUrl is not available.`;
+      const message = `${this.options.name}: The SMTP connectionUrl is not available.`;
 
       if (!options.debug) {
         // No debug mode, crash the service
-        throw new Error(message);
-      } else if (options.verbose) {
+        throw new BaseError(message);
+      } else {
         // In debug mode we send all messages to the console
-        Logger.warn(`${message} All messages will be sent to the console as warnings.`);
+        this.logger.warn(`${message} All messages will be sent to the console as warnings.`);
       }
     }
 
@@ -99,7 +104,7 @@ export default class EmailService extends BaseNotificationService {
       await this.transporter.verify();
       return true;
     } catch (exception) {
-      Logger.debug(exception);
+      this.logger.debug(exception);
       return false;
     }
   }
@@ -127,15 +132,27 @@ export default class EmailService extends BaseNotificationService {
       // Send simple email using the transporter
       return this.transporter.sendMail(data);
     } else {
-      const errorMessage = `${this.name} is not ready, the SMTP connectionUrl may be invalid or unavailable`;
+      const errorMessage = `${this.options.name} is not ready, the SMTP connectionUrl may be invalid or unavailable`;
 
       if (this.options.debug) {
         // Logs the email body in the console as a warning
-        Logger.warn(errorMessage, { body: JSON.stringify(data, null, 2) });
+        this.logger.warn(errorMessage, { body: JSON.stringify(data, null, 2) });
       } else {
         // Crash the service, email could not be sent
-        throw new Error(errorMessage);
+        throw new BaseError(errorMessage);
       }
     }
+  }
+
+  onMount() {
+  }
+
+  onUnmount() {
+  }
+
+  async onInit() {
+  }
+
+  async onReady() {
   }
 }

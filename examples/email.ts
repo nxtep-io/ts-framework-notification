@@ -1,4 +1,4 @@
-import { Logger } from 'ts-framework';
+import { Logger } from 'ts-framework-common';
 import { Email } from '../lib';
 
 const email = new Email({

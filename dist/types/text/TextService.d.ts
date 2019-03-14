@@ -1,13 +1,13 @@
-import { BaseNotificationServiceOptions, BaseNotificationService } from '../base';
+import { BaseTextGateway, TextGateway } from './gateways/BaseTextGateway';
 import { TextMessageSchema } from './TextMessage';
-import { TextGateway, BaseTextGateway } from './gateways/BaseTextGateway';
-export interface TextServiceOptions extends BaseNotificationServiceOptions {
+import { NotificationService, NotificationServiceOptions } from '../base';
+export interface TextServiceOptions extends NotificationServiceOptions {
     from?: string;
     gateway: TextGateway;
     gatewayOptions?: any;
 }
-export default class TextService extends BaseNotificationService {
-    protected options: TextServiceOptions;
+export default class TextService extends NotificationService {
+    options: TextServiceOptions;
     protected gatewayInstance?: BaseTextGateway;
     constructor(options: TextServiceOptions);
     /**
@@ -24,4 +24,8 @@ export default class TextService extends BaseNotificationService {
      * @param message The message options
      */
     send(message: TextMessageSchema): Promise<any>;
+    onMount(): void;
+    onUnmount(): void;
+    onInit(): Promise<void>;
+    onReady(): Promise<void>;
 }

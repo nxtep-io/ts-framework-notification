@@ -2,7 +2,7 @@ import { TextMessageSchema } from "../TextMessage";
 export declare enum TextGateway {
     TWILIO = "twilio",
     CUSTOM = "custom",
-    DEBUG = "debug",
+    DEBUG = "debug"
 }
 export interface BaseTextGateway {
     isReady: boolean;

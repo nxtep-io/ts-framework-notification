@@ -1,28 +1,27 @@
-import { Logger } from 'ts-framework';
-import { BaseNotificationServiceOptions, BaseNotificationService } from '../base';
-import { TextMessageSchema } from './TextMessage';
-import { TextGateway, BaseTextGateway } from './gateways/BaseTextGateway';
+import { BaseTextGateway, TextGateway } from './gateways/BaseTextGateway';
 import TwilioGateway from './gateways/TwilioTextGateway';
+import { TextMessageSchema } from './TextMessage';
+import { NotificationService, NotificationServiceOptions } from '../base';
 
-export interface TextServiceOptions extends BaseNotificationServiceOptions {
+export interface TextServiceOptions extends NotificationServiceOptions {
   from?: string;
   gateway: TextGateway;
   gatewayOptions?: any;
 }
 
-export default class TextService extends BaseNotificationService {
-  protected options: TextServiceOptions;
+export default class TextService extends NotificationService {
+  public options: TextServiceOptions;
   protected gatewayInstance?: BaseTextGateway;
 
   constructor(options: TextServiceOptions) {
-    super('TextService', options);
+    super({ name: 'TextService', ...options });
 
     if (!this.options.gateway) {
       throw new Error('No gateway supplied for the Text messages service');
     }
 
     this.initGateway().catch(exception => {
-      Logger.error(exception)
+      this.logger.error(exception)
       this.gatewayInstance = undefined;
     });
   }
@@ -42,7 +41,7 @@ export default class TextService extends BaseNotificationService {
       this.gatewayInstance = {
         isReady: true,
         async send(msg) {
-          Logger.warn('TextService: Sending SMS as a warning in debug mode', JSON.stringify(msg, null, 2));
+          this.logger.warn('TextService: Sending SMS as a warning in debug mode', JSON.stringify(msg, null, 2));
         }
       }
     }
@@ -62,5 +61,14 @@ export default class TextService extends BaseNotificationService {
    */
   public async send(message: TextMessageSchema) {
     return this.gatewayInstance.send(message);
+  }
+
+  onMount() {
+  }
+  onUnmount() {
+  }
+  async onInit() {
+  }
+  async onReady() {
   }
 }
