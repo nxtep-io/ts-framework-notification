@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>EmailService | ts-framework-notification (v1.2.1)</title>
+	<title>EmailService | ts-framework-notification (v2.3.0)</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">ts-framework-notification (v1.2.1)</a>
+					<a href="../index.html" class="title">ts-framework-notification (v2.3.0)</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -70,13 +70,19 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="basenotificationservice.html" class="tsd-signature-type">BaseNotificationService</a>
+						<a href="notificationservice.html" class="tsd-signature-type">NotificationService</a>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">EmailService</span>
 							</li>
 						</ul>
 					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><span class="tsd-signature-type">Component</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -92,16 +98,22 @@
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="emailservice.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-protected tsd-is-external"><a href="emailservice.html#options" class="tsd-kind-icon">options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="emailservice.html#logger" class="tsd-kind-icon">logger</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-external"><a href="emailservice.html#options" class="tsd-kind-icon">options</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected tsd-is-external"><a href="emailservice.html#templateengine" class="tsd-kind-icon">template<wbr>Engine</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected tsd-is-external"><a href="emailservice.html#transporter" class="tsd-kind-icon">transporter</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="emailservice.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="emailservice.html#describe" class="tsd-kind-icon">describe</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="emailservice.html#isready" class="tsd-kind-icon">is<wbr>Ready</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external"><a href="emailservice.html#oninit" class="tsd-kind-icon">on<wbr>Init</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external"><a href="emailservice.html#onmount" class="tsd-kind-icon">on<wbr>Mount</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external"><a href="emailservice.html#onready" class="tsd-kind-icon">on<wbr>Ready</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external"><a href="emailservice.html#onunmount" class="tsd-kind-icon">on<wbr>Unmount</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external"><a href="emailservice.html#send" class="tsd-kind-icon">send</a></li>
 							</ul>
 						</section>
@@ -119,9 +131,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Overrides <a href="basenotificationservice.html">BaseNotificationService</a>.<a href="basenotificationservice.html#constructor">constructor</a></p>
+								<p>Overrides <a href="notificationservice.html">NotificationService</a>.<a href="notificationservice.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in email/EmailService.ts:43</li>
+									<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/563eb56/lib/email/EmailService.ts#L47">email/EmailService.ts:47</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -148,29 +160,24 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external">
-					<a name="name" class="tsd-anchor"></a>
-					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="logger" class="tsd-anchor"></a>
+					<h3>logger</h3>
+					<div class="tsd-signature tsd-kind-icon">logger<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">LoggerInstance</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="baseservice.html">BaseService</a>.<a href="baseservice.html#name">name</a></p>
+						<p>Inherited from Service.logger</p>
 						<ul>
-							<li>Defined in base/BaseService.ts:12</li>
+							<li>Defined in /Users/luiseduardobrito/Projects/nxtep-io/ts-framework-notification/node_modules/ts-framework-common/dist/types/Service.d.ts:11</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The service name for verbose logging.</p>
-						</div>
-					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-protected tsd-is-external">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
 					<a name="options" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> options</h3>
+					<h3>options</h3>
 					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <a href="../interfaces/emailserviceoptions.html" class="tsd-signature-type">EmailServiceOptions</a></div>
 					<aside class="tsd-sources">
-						<p>Overrides <a href="basenotificationservice.html">BaseNotificationService</a>.<a href="basenotificationservice.html#options">options</a></p>
+						<p>Overrides <a href="notificationservice.html">NotificationService</a>.<a href="notificationservice.html#options">options</a></p>
 						<ul>
-							<li>Defined in email/EmailService.ts:50</li>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/563eb56/lib/email/EmailService.ts#L54">email/EmailService.ts:54</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -185,7 +192,7 @@
 					<div class="tsd-signature tsd-kind-icon">template<wbr>Engine<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Template</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in email/EmailService.ts:43</li>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/563eb56/lib/email/EmailService.ts#L47">email/EmailService.ts:47</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -195,13 +202,42 @@
 					<div class="tsd-signature tsd-kind-icon">transporter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">nodemailer.Transporter</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in email/EmailService.ts:42</li>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/563eb56/lib/email/EmailService.ts#L46">email/EmailService.ts:46</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+					<a name="type" class="tsd-anchor"></a>
+					<h3>type</h3>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SERVICE</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from Service.type</p>
+						<ul>
+							<li>Defined in /Users/luiseduardobrito/Projects/nxtep-io/ts-framework-notification/node_modules/ts-framework-common/dist/types/Service.d.ts:12</li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+					<a name="describe" class="tsd-anchor"></a>
+					<h3>describe</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">describe<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ServiceDescription</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from Service.describe</p>
+								<ul>
+									<li>Defined in /Users/luiseduardobrito/Projects/nxtep-io/ts-framework-notification/node_modules/ts-framework-common/dist/types/Service.d.ts:14</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ServiceDescription</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
 					<a name="isready" class="tsd-anchor"></a>
 					<h3>is<wbr>Ready</h3>
@@ -212,7 +248,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in email/EmailService.ts:93</li>
+									<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/563eb56/lib/email/EmailService.ts#L98">email/EmailService.ts:98</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -225,6 +261,78 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+					<a name="oninit" class="tsd-anchor"></a>
+					<h3>on<wbr>Init</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">on<wbr>Init<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides Service.onInit</p>
+								<ul>
+									<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/563eb56/lib/email/EmailService.ts#L153">email/EmailService.ts:153</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+					<a name="onmount" class="tsd-anchor"></a>
+					<h3>on<wbr>Mount</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">on<wbr>Mount<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides Service.onMount</p>
+								<ul>
+									<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/563eb56/lib/email/EmailService.ts#L147">email/EmailService.ts:147</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+					<a name="onready" class="tsd-anchor"></a>
+					<h3>on<wbr>Ready</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">on<wbr>Ready<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides Service.onReady</p>
+								<ul>
+									<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/563eb56/lib/email/EmailService.ts#L156">email/EmailService.ts:156</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+					<a name="onunmount" class="tsd-anchor"></a>
+					<h3>on<wbr>Unmount</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">on<wbr>Unmount<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides Service.onUnmount</p>
+								<ul>
+									<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/563eb56/lib/email/EmailService.ts#L150">email/EmailService.ts:150</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
 					<a name="send" class="tsd-anchor"></a>
 					<h3>send</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
@@ -233,9 +341,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Overrides <a href="basenotificationservice.html">BaseNotificationService</a>.<a href="basenotificationservice.html#send">send</a></p>
+								<p>Overrides <a href="notificationservice.html">NotificationService</a>.<a href="notificationservice.html#send">send</a></p>
 								<ul>
-									<li>Defined in email/EmailService.ts:112</li>
+									<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/563eb56/lib/email/EmailService.ts#L117">email/EmailService.ts:117</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -269,16 +377,13 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-enum tsd-is-external">
+						<a href="../enums/textgateway.html" class="tsd-kind-icon">Text<wbr>Gateway</a>
+					</li>
+					<li class=" tsd-kind-enum tsd-is-external">
 						<a href="../enums/transporttypes.html" class="tsd-kind-icon">Transport<wbr>Types</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="basemessage.html" class="tsd-kind-icon">Base<wbr>Message</a>
-					</li>
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="basenotificationservice.html" class="tsd-kind-icon">Base<wbr>Notification<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="baseservice.html" class="tsd-kind-icon">Base<wbr>Service</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="emailmessage.html" class="tsd-kind-icon">Email<wbr>Message</a>
@@ -292,9 +397,9 @@
 								<a href="emailservice.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external">
-								<a href="emailservice.html#name" class="tsd-kind-icon">name</a>
+								<a href="emailservice.html#logger" class="tsd-kind-icon">logger</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-protected tsd-is-external">
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
 								<a href="emailservice.html#options" class="tsd-kind-icon">options</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected tsd-is-external">
@@ -303,8 +408,26 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected tsd-is-external">
 								<a href="emailservice.html#transporter" class="tsd-kind-icon">transporter</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+								<a href="emailservice.html#type" class="tsd-kind-icon">type</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+								<a href="emailservice.html#describe" class="tsd-kind-icon">describe</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
 								<a href="emailservice.html#isready" class="tsd-kind-icon">is<wbr>Ready</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+								<a href="emailservice.html#oninit" class="tsd-kind-icon">on<wbr>Init</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+								<a href="emailservice.html#onmount" class="tsd-kind-icon">on<wbr>Mount</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+								<a href="emailservice.html#onready" class="tsd-kind-icon">on<wbr>Ready</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+								<a href="emailservice.html#onunmount" class="tsd-kind-icon">on<wbr>Unmount</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
 								<a href="emailservice.html#send" class="tsd-kind-icon">send</a>
@@ -322,14 +445,23 @@
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="notification.html" class="tsd-kind-icon">Notification</a>
 					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="notificationservice.html" class="tsd-kind-icon">Notification<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="textmessage.html" class="tsd-kind-icon">Text<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="textservice.html" class="tsd-kind-icon">Text<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="twiliotextgateway.html" class="tsd-kind-icon">Twilio<wbr>Text<wbr>Gateway</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="../interfaces/basemessageschema.html" class="tsd-kind-icon">Base<wbr>Message<wbr>Schema</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
-						<a href="../interfaces/basenotificationserviceoptions.html" class="tsd-kind-icon">Base<wbr>Notification<wbr>Service<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-is-external">
-						<a href="../interfaces/baseserviceoptions.html" class="tsd-kind-icon">Base<wbr>Service<wbr>Options</a>
+						<a href="../interfaces/basetextgateway.html" class="tsd-kind-icon">Base<wbr>Text<wbr>Gateway</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="../interfaces/emailmessageschema.html" class="tsd-kind-icon">Email<wbr>Message<wbr>Schema</a>
@@ -348,6 +480,18 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="../interfaces/notificationoptions.html" class="tsd-kind-icon">Notification<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="../interfaces/notificationserviceoptions.html" class="tsd-kind-icon">Notification<wbr>Service<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="../interfaces/textmessageschema.html" class="tsd-kind-icon">Text<wbr>Message<wbr>Schema</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="../interfaces/textserviceoptions.html" class="tsd-kind-icon">Text<wbr>Service<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="../interfaces/twiliogatewayoptions.html" class="tsd-kind-icon">Twilio<wbr>Gateway<wbr>Options</a>
 					</li>
 				</ul>
 			</nav>

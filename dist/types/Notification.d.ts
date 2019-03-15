@@ -1,15 +1,18 @@
-import { BaseNotificationService, BaseNotificationServiceOptions } from "./base";
+import { NotificationService, NotificationServiceOptions } from "./base";
 import { Email, EmailMessage, EmailServiceOptions } from './email';
 import { Firebase, FirebaseMessage, FirebaseServiceOptions } from './firebase';
-export interface NotificationOptions extends BaseNotificationServiceOptions {
+import { Text, TextMessage, TextServiceOptions } from './text';
+export interface NotificationOptions extends NotificationServiceOptions {
     firebase?: FirebaseServiceOptions;
     email?: EmailServiceOptions;
+    text?: TextServiceOptions;
 }
-export default class Notification extends BaseNotificationService {
-    options: NotificationOptions;
+export default class Notification extends NotificationService {
+    readonly options: NotificationOptions;
     transports: {
         email?: Email;
         firebase?: Firebase;
+        text?: Text;
     };
     static EmailMessage: typeof EmailMessage;
     static FirebaseMessage: typeof FirebaseMessage;
@@ -17,8 +20,12 @@ export default class Notification extends BaseNotificationService {
     /**
      * Send a notification using the currently available and configured transporters.
      *
-     * @param message The notification to be sent, can be a Email message or a Firebase message.
+     * @param message The notification to be sent, can be an Email message, a Firebase message or a Text message.
      * @param options The options to be sent to the Transporter
      */
-    send(message: EmailMessage | FirebaseMessage, options?: any): Promise<any>;
+    send(message: EmailMessage | FirebaseMessage | TextMessage, options?: any): Promise<any>;
+    onMount(): void;
+    onUnmount(): void;
+    onInit(): Promise<void>;
+    onReady(): Promise<void>;
 }

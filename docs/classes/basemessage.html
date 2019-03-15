@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BaseMessage | ts-framework-notification (v1.2.1)</title>
+	<title>BaseMessage | ts-framework-notification (v2.3.0)</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">ts-framework-notification (v1.2.1)</a>
+					<a href="../index.html" class="title">ts-framework-notification (v2.3.0)</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -78,6 +78,9 @@
 							<li>
 								<a href="firebasemessage.html" class="tsd-signature-type">FirebaseMessage</a>
 							</li>
+							<li>
+								<a href="textmessage.html" class="tsd-signature-type">TextMessage</a>
+							</li>
 						</ul>
 					</li>
 				</ul>
@@ -114,7 +117,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in base/BaseMessage.ts:10</li>
+									<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/563eb56/lib/base/BaseMessage.ts#L10">base/BaseMessage.ts:10</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -136,7 +139,7 @@
 					<div class="tsd-signature tsd-kind-icon">_id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in base/BaseMessage.ts:9</li>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/563eb56/lib/base/BaseMessage.ts#L9">base/BaseMessage.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -146,7 +149,7 @@
 					<div class="tsd-signature tsd-kind-icon">_type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in base/BaseMessage.ts:10</li>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/563eb56/lib/base/BaseMessage.ts#L10">base/BaseMessage.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -162,6 +165,9 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-is-external">
+						<a href="../enums/textgateway.html" class="tsd-kind-icon">Text<wbr>Gateway</a>
+					</li>
 					<li class=" tsd-kind-enum tsd-is-external">
 						<a href="../enums/transporttypes.html" class="tsd-kind-icon">Transport<wbr>Types</a>
 					</li>
@@ -184,12 +190,6 @@
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-class tsd-is-external">
-						<a href="basenotificationservice.html" class="tsd-kind-icon">Base<wbr>Notification<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="baseservice.html" class="tsd-kind-icon">Base<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class tsd-is-external">
 						<a href="emailmessage.html" class="tsd-kind-icon">Email<wbr>Message</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
@@ -204,14 +204,23 @@
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="notification.html" class="tsd-kind-icon">Notification</a>
 					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="notificationservice.html" class="tsd-kind-icon">Notification<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="textmessage.html" class="tsd-kind-icon">Text<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="textservice.html" class="tsd-kind-icon">Text<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="twiliotextgateway.html" class="tsd-kind-icon">Twilio<wbr>Text<wbr>Gateway</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="../interfaces/basemessageschema.html" class="tsd-kind-icon">Base<wbr>Message<wbr>Schema</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
-						<a href="../interfaces/basenotificationserviceoptions.html" class="tsd-kind-icon">Base<wbr>Notification<wbr>Service<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-is-external">
-						<a href="../interfaces/baseserviceoptions.html" class="tsd-kind-icon">Base<wbr>Service<wbr>Options</a>
+						<a href="../interfaces/basetextgateway.html" class="tsd-kind-icon">Base<wbr>Text<wbr>Gateway</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="../interfaces/emailmessageschema.html" class="tsd-kind-icon">Email<wbr>Message<wbr>Schema</a>
@@ -230,6 +239,18 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="../interfaces/notificationoptions.html" class="tsd-kind-icon">Notification<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="../interfaces/notificationserviceoptions.html" class="tsd-kind-icon">Notification<wbr>Service<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="../interfaces/textmessageschema.html" class="tsd-kind-icon">Text<wbr>Message<wbr>Schema</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="../interfaces/textserviceoptions.html" class="tsd-kind-icon">Text<wbr>Service<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="../interfaces/twiliogatewayoptions.html" class="tsd-kind-icon">Twilio<wbr>Gateway<wbr>Options</a>
 					</li>
 				</ul>
 			</nav>

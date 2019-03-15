@@ -1,13 +1,17 @@
-/// <reference types="email-templates" />
-import * as nodemailer from 'nodemailer';
 import * as Template from 'email-templates';
-import { BaseNotificationService, BaseNotificationServiceOptions } from '../base';
+import * as nodemailer from 'nodemailer';
+import { LoggerInstance } from 'ts-framework-common';
+import { NotificationService, NotificationServiceOptions } from '../base';
 import { EmailMessageSchema } from './EmailMessage';
-export interface EmailServiceOptions extends BaseNotificationServiceOptions {
+export interface EmailServiceOptions extends NotificationServiceOptions {
     /**
      * The default sender for the emails sent by the service.
      */
     from?: string;
+    /**
+     * The logger instance for the service.
+     */
+    logger?: LoggerInstance;
     /**
      * E-mails will be sent to console whenever the connectionUrl is not available if debug is "true".
      */
@@ -30,8 +34,8 @@ export interface EmailServiceOptions extends BaseNotificationServiceOptions {
         defaultTemplate?: string;
     };
 }
-export default class EmailService extends BaseNotificationService {
-    protected readonly options: EmailServiceOptions;
+export default class EmailService extends NotificationService {
+    readonly options: EmailServiceOptions;
     protected readonly transporter?: nodemailer.Transporter;
     protected readonly templateEngine?: Template;
     /**
@@ -50,4 +54,8 @@ export default class EmailService extends BaseNotificationService {
      * @param message The message options
      */
     send(message: EmailMessageSchema): Promise<any>;
+    onMount(): void;
+    onUnmount(): void;
+    onInit(): Promise<void>;
+    onReady(): Promise<void>;
 }

@@ -1,24 +1,18 @@
 import { TransportTypes } from './../types';
 import { BaseMessageSchema } from './BaseMessage';
-import BaseService, { BaseServiceOptions } from "./BaseService";
+import { Service, ServiceOptions } from "ts-framework-common";
 
-export interface BaseNotificationServiceOptions extends BaseServiceOptions {
+export interface NotificationServiceOptions extends ServiceOptions {
 }
 
-export default abstract class BaseNotificationService extends BaseService {
-  /**
-   * The notification service options.
-   */
-  protected readonly options: BaseNotificationServiceOptions;
-
+export default abstract class NotificationService extends Service {
   /**
    * Instantiates a new Notification service.
    * 
-   * @param name The service name for verbose logging
    * @param options The notification service options
    */
-  constructor(name: string, options: BaseNotificationServiceOptions) {
-    super(name, options);
+  constructor(public options: NotificationServiceOptions) {
+    super(options);
   }
 
   /**

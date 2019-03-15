@@ -1,10 +1,8 @@
-import { default as BaseService, BaseServiceOptions } from './BaseService';
-import { default as BaseNotificationService, BaseNotificationServiceOptions } from './BaseNotificationService';
+import { default as NotificationService, NotificationServiceOptions } from './NotificationService';
 import { default as BaseMessage, BaseMessageSchema } from './BaseMessage';
-export { BaseService, BaseServiceOptions, BaseNotificationService, BaseNotificationServiceOptions, BaseMessage, BaseMessageSchema };
+export { NotificationService, NotificationServiceOptions, BaseMessage, BaseMessageSchema };
 declare const _default: {
-    BaseService: typeof BaseService;
-    BaseNotificationService: typeof BaseNotificationService;
+    NotificationService: typeof NotificationService;
     BaseMessage: typeof BaseMessage;
 };
 export default _default;
