@@ -5,11 +5,11 @@ export interface TwilioGatewayOptions {
     accountSid: string;
     authToken: string;
 }
-export default class TwilioTextGateway implements BaseTextGateway {
+export declare class TwilioTextGateway implements BaseTextGateway {
     protected options: TwilioGatewayOptions;
     client: any;
     isReady: boolean;
     constructor(options: TwilioGatewayOptions);
-    protected init(): Promise<void>;
+    init(): Promise<void>;
     send(message: TextMessageSchema): any;
 }

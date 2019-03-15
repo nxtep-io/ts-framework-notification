@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>FirebaseTransportOptions | ts-framework-notification (v2.3.0)</title>
+	<title>TextServiceOptions | ts-framework-notification (v2.3.0)</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,28 +56,26 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="firebasetransportoptions.html">FirebaseTransportOptions</a>
+					<a href="textserviceoptions.html">TextServiceOptions</a>
 				</li>
 			</ul>
-			<h1>Interface FirebaseTransportOptions</h1>
+			<h1>Interface TextServiceOptions</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Reference: <a href="https://firebase.google.com/docs/reference/admin/node/admin.messaging.MessagingOptions">https://firebase.google.com/docs/reference/admin/node/admin.messaging.MessagingOptions</a></p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">FirebaseTransportOptions</span>
+						<a href="notificationserviceoptions.html" class="tsd-signature-type">NotificationServiceOptions</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">TextServiceOptions</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -88,8 +86,11 @@
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="firebasetransportoptions.html#priority" class="tsd-kind-icon">priority</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="firebasetransportoptions.html#timetolive" class="tsd-kind-icon">time<wbr>ToLive</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="textserviceoptions.html#from" class="tsd-kind-icon">from</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="textserviceoptions.html#gateway" class="tsd-kind-icon">gateway</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="textserviceoptions.html#gatewayoptions" class="tsd-kind-icon">gateway<wbr>Options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="textserviceoptions.html#logger" class="tsd-kind-icon">logger</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="textserviceoptions.html#name" class="tsd-kind-icon">name</a></li>
 							</ul>
 						</section>
 					</div>
@@ -98,22 +99,54 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a name="priority" class="tsd-anchor"></a>
-					<h3>priority</h3>
-					<div class="tsd-signature tsd-kind-icon">priority<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"normal"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"high"</span></div>
+					<a name="from" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> from</h3>
+					<div class="tsd-signature tsd-kind-icon">from<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/e52ca57/lib/firebase/FirebaseService.ts#L32">firebase/FirebaseService.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/e52ca57/lib/text/TextService.ts#L6">text/TextService.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a name="timetolive" class="tsd-anchor"></a>
-					<h3>time<wbr>ToLive</h3>
-					<div class="tsd-signature tsd-kind-icon">time<wbr>ToLive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="gateway" class="tsd-anchor"></a>
+					<h3>gateway</h3>
+					<div class="tsd-signature tsd-kind-icon">gateway<span class="tsd-signature-symbol">:</span> <a href="../enums/textgateway.html" class="tsd-signature-type">TextGateway</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/e52ca57/lib/firebase/FirebaseService.ts#L33">firebase/FirebaseService.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/e52ca57/lib/text/TextService.ts#L7">text/TextService.ts:7</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+					<a name="gatewayoptions" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> gateway<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">gateway<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/e52ca57/lib/text/TextService.ts#L8">text/TextService.ts:8</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
+					<a name="logger" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> logger</h3>
+					<div class="tsd-signature tsd-kind-icon">logger<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">LoggerInstance</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from ComponentOptions.logger</p>
+						<ul>
+							<li>Defined in /Users/luiseduardobrito/Projects/nxtep-io/ts-framework-notification/node_modules/ts-framework-common/dist/types/component/Component.d.ts:13</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
+					<a name="name" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from ComponentOptions.name</p>
+						<ul>
+							<li>Defined in /Users/luiseduardobrito/Projects/nxtep-io/ts-framework-notification/node_modules/ts-framework-common/dist/types/component/Component.d.ts:12</li>
 						</ul>
 					</aside>
 				</section>
@@ -183,21 +216,9 @@
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="firebaseserviceoptions.html" class="tsd-kind-icon">Firebase<wbr>Service<wbr>Options</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface tsd-is-external">
+					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="firebasetransportoptions.html" class="tsd-kind-icon">Firebase<wbr>Transport<wbr>Options</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-								<a href="firebasetransportoptions.html#priority" class="tsd-kind-icon">priority</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-								<a href="firebasetransportoptions.html#timetolive" class="tsd-kind-icon">time<wbr>ToLive</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="notificationoptions.html" class="tsd-kind-icon">Notification<wbr>Options</a>
 					</li>
@@ -207,9 +228,30 @@
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="textmessageschema.html" class="tsd-kind-icon">Text<wbr>Message<wbr>Schema</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-is-external">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-is-external">
 						<a href="textserviceoptions.html" class="tsd-kind-icon">Text<wbr>Service<wbr>Options</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+								<a href="textserviceoptions.html#from" class="tsd-kind-icon">from</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+								<a href="textserviceoptions.html#gateway" class="tsd-kind-icon">gateway</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+								<a href="textserviceoptions.html#gatewayoptions" class="tsd-kind-icon">gateway<wbr>Options</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
+								<a href="textserviceoptions.html#logger" class="tsd-kind-icon">logger</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
+								<a href="textserviceoptions.html#name" class="tsd-kind-icon">name</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="twiliogatewayoptions.html" class="tsd-kind-icon">Twilio<wbr>Gateway<wbr>Options</a>
 					</li>

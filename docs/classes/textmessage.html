@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BaseNotificationService | ts-framework-notification (v1.2.1)</title>
+	<title>TextMessage | ts-framework-notification (v2.3.0)</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">ts-framework-notification (v1.2.1)</a>
+					<a href="../index.html" class="title">ts-framework-notification (v2.3.0)</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="basenotificationservice.html">BaseNotificationService</a>
+					<a href="textmessage.html">TextMessage</a>
 				</li>
 			</ul>
-			<h1>Class BaseNotificationService</h1>
+			<h1>Class TextMessage</h1>
 		</div>
 	</div>
 </header>
@@ -70,24 +70,19 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="baseservice.html" class="tsd-signature-type">BaseService</a>
+						<a href="basemessage.html" class="tsd-signature-type">BaseMessage</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">BaseNotificationService</span>
-								<ul class="tsd-hierarchy">
-									<li>
-										<a href="emailservice.html" class="tsd-signature-type">EmailService</a>
-									</li>
-									<li>
-										<a href="firebaseservice.html" class="tsd-signature-type">FirebaseService</a>
-									</li>
-									<li>
-										<a href="notification.html" class="tsd-signature-type">Notification</a>
-									</li>
-								</ul>
+								<span class="target">TextMessage</span>
 							</li>
 						</ul>
 					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/textmessageschema.html" class="tsd-signature-type">TextMessageSchema</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -97,20 +92,17 @@
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-external"><a href="basenotificationservice.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-external"><a href="textmessage.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="basenotificationservice.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-protected tsd-is-external"><a href="basenotificationservice.html#options" class="tsd-kind-icon">options</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-external">
-							<h3>Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="basenotificationservice.html#send" class="tsd-kind-icon">send</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-external"><a href="textmessage.html#_id" class="tsd-kind-icon">_id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-external"><a href="textmessage.html#_type" class="tsd-kind-icon">_type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="textmessage.html#from" class="tsd-kind-icon">from</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="textmessage.html#text" class="tsd-kind-icon">text</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="textmessage.html#to" class="tsd-kind-icon">to</a></li>
 							</ul>
 						</section>
 					</div>
@@ -122,115 +114,85 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Base<wbr>Notification<wbr>Service<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/basenotificationserviceoptions.html" class="tsd-signature-type">BaseNotificationServiceOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="basenotificationservice.html" class="tsd-signature-type">BaseNotificationService</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Text<wbr>Message<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><a href="../interfaces/textmessageschema.html" class="tsd-signature-type">TextMessageSchema</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="textmessage.html" class="tsd-signature-type">TextMessage</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Overrides <a href="baseservice.html">BaseService</a>.<a href="baseservice.html#constructor">constructor</a></p>
+								<p>Overrides <a href="basemessage.html">BaseMessage</a>.<a href="basemessage.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in base/BaseNotificationService.ts:12</li>
+									<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/e52ca57/lib/text/TextMessage.ts#L15">text/TextMessage.ts:15</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Instantiates a new Notification service.</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>name: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>The service name for verbose logging</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<h5>options: <a href="../interfaces/basenotificationserviceoptions.html" class="tsd-signature-type">BaseNotificationServiceOptions</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>The notification service options</p>
-										</div>
-									</div>
+									<h5>data: <a href="../interfaces/textmessageschema.html" class="tsd-signature-type">TextMessageSchema</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="basenotificationservice.html" class="tsd-signature-type">BaseNotificationService</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="textmessage.html" class="tsd-signature-type">TextMessage</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external">
-					<a name="name" class="tsd-anchor"></a>
-					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+					<a name="_id" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> _id</h3>
+					<div class="tsd-signature tsd-kind-icon">_id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="baseservice.html">BaseService</a>.<a href="baseservice.html#name">name</a></p>
+						<p>Implementation of <a href="../interfaces/textmessageschema.html">TextMessageSchema</a>.<a href="../interfaces/textmessageschema.html#_id">_id</a></p>
+						<p>Overrides <a href="basemessage.html">BaseMessage</a>.<a href="basemessage.html#_id">_id</a></p>
 						<ul>
-							<li>Defined in base/BaseService.ts:12</li>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/e52ca57/lib/text/TextMessage.ts#L11">text/TextMessage.ts:11</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The service name for verbose logging.</p>
-						</div>
-					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-protected tsd-is-external">
-					<a name="options" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> options</h3>
-					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <a href="../interfaces/basenotificationserviceoptions.html" class="tsd-signature-type">BaseNotificationServiceOptions</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+					<a name="_type" class="tsd-anchor"></a>
+					<h3>_type</h3>
+					<div class="tsd-signature tsd-kind-icon">_type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Overrides <a href="baseservice.html">BaseService</a>.<a href="baseservice.html#options">options</a></p>
+						<p>Implementation of <a href="../interfaces/textmessageschema.html">TextMessageSchema</a>.<a href="../interfaces/textmessageschema.html#_type">_type</a></p>
+						<p>Overrides <a href="basemessage.html">BaseMessage</a>.<a href="basemessage.html#_type">_type</a></p>
 						<ul>
-							<li>Defined in base/BaseNotificationService.ts:12</li>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/e52ca57/lib/text/TextMessage.ts#L12">text/TextMessage.ts:12</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The notification service options.</p>
-						</div>
-					</div>
 				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-external">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
-					<a name="send" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> send</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">send<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="../interfaces/basemessageschema.html" class="tsd-signature-type">BaseMessageSchema</a>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in base/BaseNotificationService.ts:30</li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Sends a new message through the notification service.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>message: <a href="../interfaces/basemessageschema.html" class="tsd-signature-type">BaseMessageSchema</a></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">any</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The options to be used in the transport</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-						</li>
-					</ul>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a name="from" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> from</h3>
+					<div class="tsd-signature tsd-kind-icon">from<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/textmessageschema.html">TextMessageSchema</a>.<a href="../interfaces/textmessageschema.html#from">from</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/e52ca57/lib/text/TextMessage.ts#L13">text/TextMessage.ts:13</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a name="text" class="tsd-anchor"></a>
+					<h3>text</h3>
+					<div class="tsd-signature tsd-kind-icon">text<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/textmessageschema.html">TextMessageSchema</a>.<a href="../interfaces/textmessageschema.html#text">text</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/e52ca57/lib/text/TextMessage.ts#L15">text/TextMessage.ts:15</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a name="to" class="tsd-anchor"></a>
+					<h3>to</h3>
+					<div class="tsd-signature tsd-kind-icon">to<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/textmessageschema.html">TextMessageSchema</a>.<a href="../interfaces/textmessageschema.html#to">to</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/e52ca57/lib/text/TextMessage.ts#L14">text/TextMessage.ts:14</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -245,34 +207,13 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-enum tsd-is-external">
+						<a href="../enums/textgateway.html" class="tsd-kind-icon">Text<wbr>Gateway</a>
+					</li>
+					<li class=" tsd-kind-enum tsd-is-external">
 						<a href="../enums/transporttypes.html" class="tsd-kind-icon">Transport<wbr>Types</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="basemessage.html" class="tsd-kind-icon">Base<wbr>Message</a>
-					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-class tsd-is-external">
-						<a href="basenotificationservice.html" class="tsd-kind-icon">Base<wbr>Notification<wbr>Service</a>
-						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
-								<a href="basenotificationservice.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external">
-								<a href="basenotificationservice.html#name" class="tsd-kind-icon">name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-protected tsd-is-external">
-								<a href="basenotificationservice.html#options" class="tsd-kind-icon">options</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
-								<a href="basenotificationservice.html#send" class="tsd-kind-icon">send</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<ul class="after-current">
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="baseservice.html" class="tsd-kind-icon">Base<wbr>Service</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="emailmessage.html" class="tsd-kind-icon">Email<wbr>Message</a>
@@ -289,14 +230,47 @@
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="notification.html" class="tsd-kind-icon">Notification</a>
 					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="notificationservice.html" class="tsd-kind-icon">Notification<wbr>Service</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-is-external">
+						<a href="textmessage.html" class="tsd-kind-icon">Text<wbr>Message</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+								<a href="textmessage.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+								<a href="textmessage.html#_id" class="tsd-kind-icon">_id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+								<a href="textmessage.html#_type" class="tsd-kind-icon">_type</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+								<a href="textmessage.html#from" class="tsd-kind-icon">from</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+								<a href="textmessage.html#text" class="tsd-kind-icon">text</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+								<a href="textmessage.html#to" class="tsd-kind-icon">to</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="textservice.html" class="tsd-kind-icon">Text<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="twiliotextgateway.html" class="tsd-kind-icon">Twilio<wbr>Text<wbr>Gateway</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="../interfaces/basemessageschema.html" class="tsd-kind-icon">Base<wbr>Message<wbr>Schema</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
-						<a href="../interfaces/basenotificationserviceoptions.html" class="tsd-kind-icon">Base<wbr>Notification<wbr>Service<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-is-external">
-						<a href="../interfaces/baseserviceoptions.html" class="tsd-kind-icon">Base<wbr>Service<wbr>Options</a>
+						<a href="../interfaces/basetextgateway.html" class="tsd-kind-icon">Base<wbr>Text<wbr>Gateway</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="../interfaces/emailmessageschema.html" class="tsd-kind-icon">Email<wbr>Message<wbr>Schema</a>
@@ -315,6 +289,18 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="../interfaces/notificationoptions.html" class="tsd-kind-icon">Notification<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="../interfaces/notificationserviceoptions.html" class="tsd-kind-icon">Notification<wbr>Service<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="../interfaces/textmessageschema.html" class="tsd-kind-icon">Text<wbr>Message<wbr>Schema</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="../interfaces/textserviceoptions.html" class="tsd-kind-icon">Text<wbr>Service<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="../interfaces/twiliogatewayoptions.html" class="tsd-kind-icon">Twilio<wbr>Gateway<wbr>Options</a>
 					</li>
 				</ul>
 			</nav>
