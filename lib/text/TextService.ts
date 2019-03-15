@@ -44,8 +44,10 @@ export default class TextService extends NotificationService {
 
   async onMount() {
   }
+  
   async onUnmount() {
   }
+
   async onInit() {
     // Handles twilio dynamic initialization
     if (this.options.gateway === TextGateway.TWILIO) {
@@ -67,6 +69,7 @@ export default class TextService extends NotificationService {
       }
     }
   }
+
   async onReady() {
   }
 }

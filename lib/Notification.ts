@@ -9,7 +9,7 @@ export interface NotificationOptions extends NotificationServiceOptions {
   text?: TextServiceOptions
 }
 
-export default class Notification extends NotificationService {
+export class Notification extends NotificationService {
   transports: {
     email?: Email
     firebase?: Firebase

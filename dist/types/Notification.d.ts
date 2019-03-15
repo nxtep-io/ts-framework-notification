@@ -7,7 +7,7 @@ export interface NotificationOptions extends NotificationServiceOptions {
     email?: EmailServiceOptions;
     text?: TextServiceOptions;
 }
-export default class Notification extends NotificationService {
+export declare class Notification extends NotificationService {
     readonly options: NotificationOptions;
     transports: {
         email?: Email;

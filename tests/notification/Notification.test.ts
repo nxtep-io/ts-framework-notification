@@ -1,5 +1,5 @@
 import * as hat from 'hat';
-import { Notification } from "../../lib";
+import Notification from "../../lib";
 
 describe('lib.services.Notification', () => {
   it('should not instantiate a Notification service without any transports', async () => {
