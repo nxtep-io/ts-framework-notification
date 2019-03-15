@@ -1,3 +1,4 @@
+import * as Twilio from 'twilio';
 import { TextMessageSchema } from "../TextMessage";
 import { BaseTextGateway } from "./BaseTextGateway";
 
@@ -7,16 +8,14 @@ export interface TwilioGatewayOptions {
   authToken: string;
 }
 
-export default class TwilioTextGateway implements BaseTextGateway {
+export class TwilioTextGateway implements BaseTextGateway {
   client: any;
   isReady = false;
 
   constructor(protected options: TwilioGatewayOptions) {
-    this.init();
   }
 
-  protected async init() {
-    const Twilio = await import('twilio');
+  public async init() {
     const { accountSid, authToken } = this.options;
     
 

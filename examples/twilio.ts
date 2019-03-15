@@ -1,5 +1,7 @@
-import { Logger } from 'ts-framework';
+import { Logger } from 'ts-framework-common';
 import { Text, TextGateway } from '../lib';
+
+const logger = Logger.getInstance();
 
 const text = new Text({
   from: process.env.SMS_FROM,
@@ -10,15 +12,20 @@ const text = new Text({
   },
 });
 
-setTimeout(() => {
-  text.send({
-    to: process.env.SMS_TO,
-    text: 'hello world',
-  }).then(response => {
-    Logger.debug(response);
+setTimeout(async () => {
+  try {
+    await text.onInit();
+
+    const response = await text.send({
+      to: process.env.SMS_TO,
+      text: 'hello world',
+    })
+
+    logger.debug('Text message sent successfully', response);
     process.exit(0);
-  }).catch(error => {
-    Logger.error(error)
+  } catch (error) {
+    logger.error('Could not send text message', error)
     process.exit(1);
-  });
-}, 1000);
+  }
+
+}, 10);

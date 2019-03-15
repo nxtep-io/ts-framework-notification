@@ -1,6 +1,8 @@
 import { Logger } from 'ts-framework-common';
 import { Email } from '../lib';
 
+const logger = Logger.getInstance();
+
 const email = new Email({
   from: process.env.SMTP_FROM,
   connectionUrl: process.env.SMTP_URL,
@@ -40,9 +42,9 @@ email.send({
     },
   },
 }).then(response => {
-  Logger.debug(response);
+  logger.debug(response);
   process.exit(0);
 }).catch(error => {
-  Logger.error(error)
+  logger.error(error)
   process.exit(1);
 });

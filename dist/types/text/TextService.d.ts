@@ -1,6 +1,6 @@
+import { NotificationService, NotificationServiceOptions } from '../base';
 import { BaseTextGateway, TextGateway } from './gateways/BaseTextGateway';
 import { TextMessageSchema } from './TextMessage';
-import { NotificationService, NotificationServiceOptions } from '../base';
 export interface TextServiceOptions extends NotificationServiceOptions {
     from?: string;
     gateway: TextGateway;
@@ -11,21 +11,17 @@ export default class TextService extends NotificationService {
     protected gatewayInstance?: BaseTextGateway;
     constructor(options: TextServiceOptions);
     /**
-     * Handles built-in gateway support initialization.
-     */
-    protected initGateway(): Promise<void>;
-    /**
      * Checks if the service is ready for sending text messages.
      */
     isReady(): Promise<boolean>;
     /**
-     * Sends an email message.
+     * Sends a a text message.
      *
      * @param message The message options
      */
     send(message: TextMessageSchema): Promise<any>;
-    onMount(): void;
-    onUnmount(): void;
+    onMount(): Promise<void>;
+    onUnmount(): Promise<void>;
     onInit(): Promise<void>;
     onReady(): Promise<void>;
 }

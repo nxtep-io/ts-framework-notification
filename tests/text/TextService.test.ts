@@ -15,6 +15,7 @@ describe('lib.services.Text', () => {
 
   it('should not crash with a valid configuration but in debug mode', async () => {
     const text = new Text({ gateway: TextGateway.DEBUG });
+    await text.onInit();
     expect(await text.isReady()).toBe(true);
     expect(text).toBeTruthy();
   });
