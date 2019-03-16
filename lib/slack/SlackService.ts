@@ -2,7 +2,7 @@
 import Axios, { AxiosInstance } from "axios";
 import { BaseError } from "ts-framework-common";
 import { NotificationService, NotificationServiceOptions } from "../base";
-import { SlackMessageSchema } from "./SlackMessage";
+import { SlackMessageSchema, SlackMessage } from "./SlackMessage";
 
 
 export interface SlackServiceOptions extends NotificationServiceOptions {
@@ -16,6 +16,14 @@ export class Slack extends NotificationService {
 
   constructor(options: SlackServiceOptions) {
     super({ name: 'SlackService', ...options });
+    this.client = Axios.create();
+  }
+
+  async onMount() {
+  }
+
+  async onUnmount() {
+    this.client = undefined;
   }
 
   /**
@@ -29,21 +37,14 @@ export class Slack extends NotificationService {
       throw new BaseError("Webhook url not supplied");
     }
 
-    const response = await this.client.post(url, { ...message });
+    const data = new SlackMessage(message);
+    const response = await this.client.post(url, { ...data.toJSON() });
 
     if (response.status !== 200) {
       throw new BaseError((response.data && response.data.message) || "Error attempting to post message on slack");
     }
 
     return true;
-  }
-
-  async onMount() {
-    this.client = Axios.create();
-  }
-
-  async onUnmount() {
-    this.client = undefined;
   }
 
   async onInit() {

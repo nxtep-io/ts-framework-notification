@@ -16,8 +16,6 @@ export default class TextMessage extends BaseMessage implements TextMessageSchem
 
   constructor(data: TextMessageSchema) {
     super({ ...data, type: TransportTypes.TEXT });
-    this.from = data.from;
-    this.to = data.to;
-    this.text = data.text;
+    Object.assign(this, data);
   }
 }

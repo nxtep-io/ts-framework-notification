@@ -1,5 +1,5 @@
 import { Logger } from 'ts-framework-common';
-import { Email } from '../lib';
+import { Email } from '../../lib';
 
 const logger = Logger.getInstance();
 

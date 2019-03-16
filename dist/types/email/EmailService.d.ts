@@ -34,7 +34,7 @@ export interface EmailServiceOptions extends NotificationServiceOptions {
         defaultTemplate?: string;
     };
 }
-export default class EmailService extends NotificationService {
+export declare class Email extends NotificationService {
     readonly options: EmailServiceOptions;
     protected readonly transporter?: nodemailer.Transporter;
     protected readonly templateEngine?: Template;

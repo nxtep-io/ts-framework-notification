@@ -3,7 +3,7 @@ import * as nodemailer from 'nodemailer';
 import * as path from 'path';
 import { BaseError, LoggerInstance } from 'ts-framework-common';
 import { NotificationService, NotificationServiceOptions } from '../base';
-import EmailMessage, { EmailMessageSchema } from './EmailMessage';
+import { EmailMessage, EmailMessageSchema } from './EmailMessage';
 
 export interface EmailServiceOptions extends NotificationServiceOptions {
   /**
@@ -42,7 +42,7 @@ export interface EmailServiceOptions extends NotificationServiceOptions {
   }
 }
 
-export default class EmailService extends NotificationService {
+export class Email extends NotificationService {
   protected readonly transporter?: nodemailer.Transporter;
   protected readonly templateEngine?: Template;
 
