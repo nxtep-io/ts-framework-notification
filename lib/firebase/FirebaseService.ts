@@ -1,7 +1,7 @@
 import * as FirebaseSDK from 'firebase-admin';
 import { BaseError, LoggerInstance } from 'ts-framework-common';
 import { NotificationService, NotificationServiceOptions } from '../base';
-import FirebaseMessage, { FirebaseMessageSchema } from './FirebaseMessage';
+import { FirebaseMessage, FirebaseMessageSchema } from './FirebaseMessage';
 
 export interface FirebaseServiceOptions extends NotificationServiceOptions {
   /**
@@ -33,7 +33,7 @@ export interface FirebaseTransportOptions {
   timeToLive: number
 }
 
-export default class FirebaseService extends NotificationService {
+export class Firebase extends NotificationService {
   protected sdk: FirebaseSDK.app.App
 
   constructor(public readonly options: FirebaseServiceOptions) {
@@ -79,13 +79,5 @@ export default class FirebaseService extends NotificationService {
         throw new Error(errorMessage);
       }
     }
-  }
-  onMount() {
-  }
-  onUnmount() {
-  }
-  async onInit() {
-  }
-  async onReady() {
   }
 }

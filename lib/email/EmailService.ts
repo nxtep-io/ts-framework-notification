@@ -143,16 +143,4 @@ export class Email extends NotificationService {
       }
     }
   }
-
-  onMount() {
-  }
-
-  onUnmount() {
-  }
-
-  async onInit() {
-  }
-
-  async onReady() {
-  }
 }

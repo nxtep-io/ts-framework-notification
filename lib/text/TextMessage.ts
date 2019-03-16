@@ -7,7 +7,7 @@ export interface TextMessageSchema extends BaseMessageSchema {
   text: string;
 }
 
-export default class TextMessage extends BaseMessage implements TextMessageSchema {
+export class TextMessage extends BaseMessage implements TextMessageSchema {
   _id?: string;
   _type: string;
   from?: string;

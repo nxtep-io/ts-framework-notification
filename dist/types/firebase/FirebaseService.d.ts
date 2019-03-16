@@ -27,13 +27,9 @@ export interface FirebaseTransportOptions {
     priority: 'normal' | 'high';
     timeToLive: number;
 }
-export default class FirebaseService extends NotificationService {
+export declare class Firebase extends NotificationService {
     readonly options: FirebaseServiceOptions;
     protected sdk: FirebaseSDK.app.App;
     constructor(options: FirebaseServiceOptions);
     send(message: FirebaseMessageSchema, options?: FirebaseTransportOptions): Promise<FirebaseSDK.messaging.MessagingDevicesResponse>;
-    onMount(): void;
-    onUnmount(): void;
-    onInit(): Promise<void>;
-    onReady(): Promise<void>;
 }

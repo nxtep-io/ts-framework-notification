@@ -54,8 +54,4 @@ export declare class Email extends NotificationService {
      * @param message The message options
      */
     send(message: EmailMessageSchema): Promise<any>;
-    onMount(): void;
-    onUnmount(): void;
-    onInit(): Promise<void>;
-    onReady(): Promise<void>;
 }

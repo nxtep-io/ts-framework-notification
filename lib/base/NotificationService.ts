@@ -1,11 +1,10 @@
-import { TransportTypes } from './../types';
+import { ComponentGroup, ComponentGroupOptions } from "ts-framework-common";
 import { BaseMessageSchema } from './BaseMessage';
-import { Service, ServiceOptions } from "ts-framework-common";
 
-export interface NotificationServiceOptions extends ServiceOptions {
+export interface NotificationServiceOptions extends ComponentGroupOptions {
 }
 
-export default abstract class NotificationService extends Service {
+export default abstract class NotificationService extends ComponentGroup {
   /**
    * Instantiates a new Notification service.
    * 

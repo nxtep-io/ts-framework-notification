@@ -6,8 +6,8 @@ export interface TextServiceOptions extends NotificationServiceOptions {
     gateway: TextGateway;
     gatewayOptions?: any;
 }
-export default class TextService extends NotificationService {
-    options: TextServiceOptions;
+export declare class Text extends NotificationService {
+    readonly options: TextServiceOptions;
     protected gatewayInstance?: BaseTextGateway;
     constructor(options: TextServiceOptions);
     /**
@@ -20,8 +20,5 @@ export default class TextService extends NotificationService {
      * @param message The message options
      */
     send(message: TextMessageSchema): Promise<any>;
-    onMount(): Promise<void>;
-    onUnmount(): Promise<void>;
-    onInit(): Promise<void>;
-    onReady(): Promise<void>;
+    onInit(server: any): Promise<void>;
 }

@@ -1,6 +1,7 @@
 import { NotificationService, NotificationServiceOptions } from '../base';
 import { BaseTextGateway, TextGateway } from './gateways/BaseTextGateway';
 import { TextMessageSchema } from './TextMessage';
+import { DebugTextGateway } from './gateways/DebugTextGateway';
 
 export interface TextServiceOptions extends NotificationServiceOptions {
   from?: string;
@@ -8,11 +9,10 @@ export interface TextServiceOptions extends NotificationServiceOptions {
   gatewayOptions?: any;
 }
 
-export default class TextService extends NotificationService {
-  public options: TextServiceOptions;
+export class Text extends NotificationService {
   protected gatewayInstance?: BaseTextGateway;
 
-  constructor(options: TextServiceOptions) {
+  constructor(public readonly options: TextServiceOptions) {
     super({ name: 'TextService', ...options });
 
     if (!this.options.gateway) {
@@ -42,13 +42,8 @@ export default class TextService extends NotificationService {
     return this.gatewayInstance.send(message);
   }
 
-  async onMount() {
-  }
-  
-  async onUnmount() {
-  }
-
-  async onInit() {
+  async onInit(server) {
+    super.onInit(server);
     // Handles twilio dynamic initialization
     if (this.options.gateway === TextGateway.TWILIO) {
       const { TwilioTextGateway } = await import('./gateways/TwilioTextGateway');
@@ -61,15 +56,7 @@ export default class TextService extends NotificationService {
       await (this.gatewayInstance as any).init();
     } else if (this.options.gateway === TextGateway.DEBUG) {
       // Handles a debug gateway (console)
-      this.gatewayInstance = {
-        isReady: true,
-        async send(msg) {
-          this.logger.warn('TextService: Sending SMS as a warning in debug mode', JSON.stringify(msg, null, 2));
-        }
-      }
+      this.gatewayInstance = new DebugTextGateway();
     }
-  }
-
-  async onReady() {
   }
 }

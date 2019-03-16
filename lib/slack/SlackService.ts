@@ -11,10 +11,9 @@ export interface SlackServiceOptions extends NotificationServiceOptions {
 }
 
 export class Slack extends NotificationService {
-  public options: SlackServiceOptions;
   public client: AxiosInstance;
 
-  constructor(options: SlackServiceOptions) {
+  constructor(public readonly options: SlackServiceOptions) {
     super({ name: 'SlackService', ...options });
     this.client = Axios.create();
   }

@@ -6,7 +6,7 @@ export interface SlackServiceOptions extends NotificationServiceOptions {
     channel?: string;
 }
 export declare class Slack extends NotificationService {
-    options: SlackServiceOptions;
+    readonly options: SlackServiceOptions;
     client: AxiosInstance;
     constructor(options: SlackServiceOptions);
     onMount(): Promise<void>;

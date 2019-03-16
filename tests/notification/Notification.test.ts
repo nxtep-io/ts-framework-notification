@@ -1,5 +1,5 @@
 import * as hat from 'hat';
-import Notification from "../../lib";
+import Notification, { TextGateway } from "../../lib";
 
 describe('lib.services.Notification', () => {
   it('should not instantiate a Notification service without any transports', async () => {
@@ -8,9 +8,6 @@ describe('lib.services.Notification', () => {
 
   it('should instantiate a Notification service with a debug email transport', async () => {
     let service = new Notification({ email: { from: 'test@company.com', debug: true } });
-
-    expect(service.transports).toHaveProperty('email');
-    expect(await service.transports.email.isReady()).toBe(false);
 
     await service.send(new Notification.EmailMessage({
       to: 'test@company.com',
@@ -21,7 +18,8 @@ describe('lib.services.Notification', () => {
 
   it('should instantiate a Notification service with a debug firebase transport', async () => {
     let service = new Notification({ firebase: { debug: true } });
-    expect(service.transports).toHaveProperty('firebase');
+
+    await service.onInit(null);
 
     await service.send(new Notification.FirebaseMessage({
       registrationToken: hat(),
@@ -30,17 +28,14 @@ describe('lib.services.Notification', () => {
     }));
   });
 
-  it('should not send a Notification without the transport required available', async () => {
-    let service = new Notification({ email: { from: 'test@company.com', debug: true } });
+  it('should instantiate a Notification service with a debug text transport', async () => {
+    let service = new Notification({ text: { gateway: TextGateway.DEBUG } });
 
-    try {
-      await service.send(new Notification.FirebaseMessage({
-        registrationToken: hat(),
-        body: 'Unit test',
-        sample: 'true'
-      }));
-    } catch (exception) {
-      expect(exception.message).toMatch(/Transport not available or misconfigured/)
-    };
+    await service.onInit(null);
+
+    await service.send(new Notification.TextMessage({
+      to: '+55119876543210',
+      text: 'Sample text for Unit Testing'
+    }));
   });
 });
