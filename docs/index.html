@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ts-framework-notification (v2.3.0)</title>
+	<title>ts-framework-notification (v2.4.0)</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">ts-framework-notification (v2.3.0)</a>
+					<a href="index.html" class="title">ts-framework-notification (v2.4.0)</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> ts-framework-notification (v2.3.0)</h1>
+			<h1> ts-framework-notification (v2.4.0)</h1>
 		</div>
 	</div>
 </header>
@@ -65,151 +65,20 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="ts-framework-notification">ts-framework-notification</h1>
-				<p><a href="https://travis-ci.org/devnup/ts-framework-notification"><img src="https://travis-ci.org/devnup/ts-framework-notification.svg?branch=master" alt="Build Status"></a>  <a href="https://coveralls.io/github/devnup/ts-framework-notification?branch=master"><img src="https://coveralls.io/repos/github/devnup/ts-framework-notification/badge.svg?branch=master" alt="Coverage Status"></a></p>
 				<p>A minimalistic framework for typescript based applications, with async/await and decorators support.</p>
 				<p>This plugin extends the Server for handling transactional notifications through multiple transports. </p>
-				<pre><code class="language-bash"><span class="hljs-comment"># Install using yarn</span>
-yarn add git+https://github.com/devnup/ts-framework-notification.git<span class="hljs-comment">#master</span>
-
-<span class="hljs-comment"># Install using NPM</span>
-npm install --save git+https://github.com/devnup/ts-framework-notification.git<span class="hljs-comment">#master</span></code></pre>
-				<p>Minimal usage: </p>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { Notification } <span class="hljs-keyword">from</span> <span class="hljs-string">'ts-framework-notification'</span>
-
-<span class="hljs-keyword">const</span> notification = <span class="hljs-keyword">new</span> Notification({
-  <span class="hljs-comment">/* Enables the email transport */</span>
-  email: {
-    <span class="hljs-keyword">from</span>: process.env.SMTP_FROM,
-    connectionUrl: process.env.SMTP_URL
-  },
-  <span class="hljs-comment">/* Enables the Firebase transport (optional) */</span>
-  firebase: {
-    serviceAccount: <span class="hljs-built_in">require</span>(<span class="hljs-string">'../service_account.json'</span>), <span class="hljs-comment">// The service account from Firebase console</span>
-    databaseURL: <span class="hljs-string">'https://&lt;APP_NAME&gt;.firebase.io'</span>
-  }
-})
-
-<span class="hljs-comment">/* Prepare a sample Email message */</span>
-<span class="hljs-keyword">const</span> email = <span class="hljs-keyword">new</span> Notification.EmailMessage({
-  to: <span class="hljs-string">'hello@company.com'</span>,
-  subject: <span class="hljs-string">'Welcome aboard!'</span>,
-  text: <span class="hljs-string">'Thank you for creating a new account! https://google.com'</span>,
-  html: <span class="hljs-string">'Thank you for creating a new account! &lt;a href="https://google.com&gt;Click here to login&lt;/a&gt;'</span>
-});
-
-
-<span class="hljs-comment">/* Prepare a sample push notification for Firebase transport */</span>
-<span class="hljs-keyword">const</span> push = <span class="hljs-keyword">new</span> Notification.FirebaseMessage({
-  registrationToken: <span class="hljs-string">'&lt; THE REGISTRATION TOKEN FOR THE SPECIFIC DEVICE OR ARRAY OF TOKENS &gt;'</span>,
-  title: <span class="hljs-string">'Hello World!'</span>,
-  body: <span class="hljs-string">'This is a simple notification message.'</span>,
-  sound: <span class="hljs-string">'&lt; the sound name &gt;'</span>,
-  color: <span class="hljs-string">'&lt; the color hex &gt;'</span>, <span class="hljs-comment">// Android only</span>
-  badge: <span class="hljs-string">'&lt; the count for the badge &gt;'</span>, <span class="hljs-comment">// iOS only</span>
-  <span class="hljs-comment">// More options in the TS typings...</span>
-})
-
-<span class="hljs-comment">/* Send async messages */</span>
-<span class="hljs-keyword">await</span> notification.send(email);
-<span class="hljs-keyword">await</span> notification.send(push);</code></pre>
-				<p>For more examples, check the full specification below.</p>
-				<p><br /></p>
-				<h2 id="getting-started">Getting Started</h2>
-				<p>The Notification module comes with built-in support for the following transports:</p>
-				<ul>
-					<li><strong>E-mail (SMTP):</strong> Backed by <code>nodemailer</code> and <code>email-templates</code> modules.</li>
-					<li><strong>Firebase Cloud Messaging:</strong> Using the official <code>firebase-admin</code> module.</li>
-				</ul>
-				<h3 id="email-transport">Email transport</h3>
-				<p>Sending a simple <code>html</code> or <code>plain text</code> message:</p>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { Email } <span class="hljs-keyword">from</span> <span class="hljs-string">'ts-framework-notification'</span>;
-
-<span class="hljs-keyword">const</span> email = <span class="hljs-keyword">new</span> Email({
-  <span class="hljs-keyword">from</span>: process.env.SMTP_FROM,
-  connectionUrl: process.env.SMTP_URL
-});
-
-<span class="hljs-comment">// Send a simple E-mail message</span>
-<span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> email.send({
-  to: <span class="hljs-string">'hello@company.com'</span>,
-  subject: <span class="hljs-string">'Welcome aboard!'</span>,
-  text: <span class="hljs-string">'Thank you for creating a new account! https://google.com'</span>,
-  html: <span class="hljs-string">'Thank you for creating a new account! &lt;a href="https://google.com&gt;Click here to login&lt;/a&gt;'</span>
-});
-
-<span class="hljs-built_in">console</span>.log(response);</code></pre>
-				<p>Sending a simple email message using the default template. </p>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { Email } <span class="hljs-keyword">from</span> <span class="hljs-string">'ts-framework-notification'</span>;
-
-<span class="hljs-keyword">const</span> email = <span class="hljs-keyword">new</span> Email({
-  <span class="hljs-keyword">from</span>: process.env.SMTP_FROM,
-  connectionUrl: process.env.SMTP_URL,
-  template: {
-    enabled: <span class="hljs-literal">true</span>
-  }
-});
-
-<span class="hljs-comment">// Send an E-mail using the default template (Cerberus)</span>
-<span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> email.send({
-  to: <span class="hljs-string">'hello@company.com'</span>,
-  subject: <span class="hljs-string">'Welcome aboard!'</span>,
-  locals: {
-    title: <span class="hljs-string">'Simple sender test'</span>,
-    logo: <span class="hljs-string">'https://i.imgur.com/5UMVOBG.jpg'</span>,
-    body: <span class="hljs-string">'Thank you for creating a new account!'</span>
-    button: {
-      label: <span class="hljs-string">'Visit your Accoutn'</span>,
-      url: <span class="hljs-string">'https://company.com/account'</span>
-    },
-    footer: <span class="hljs-string">'This is a footer'</span>,
-  },
-});
-
-<span class="hljs-built_in">console</span>.log(response);</code></pre>
-				<p>Special thanks to the <a href="http://tedgoas.github.io/Cerberus">Cerberus</a> team, that developed a great e-mail template, used here as the default template.</p>
-				<p><br /></p>
-				<h3 id="firebase-transport">Firebase transport</h3>
-				<p>Sending a simple push notification for Android and iOS:</p>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { Firebase } <span class="hljs-keyword">from</span> <span class="hljs-string">'ts-framework-notification'</span>;
-
-<span class="hljs-keyword">const</span> firebase = <span class="hljs-keyword">new</span> Firebase({
-  serviceAccount: <span class="hljs-built_in">require</span>(<span class="hljs-string">'../service_account.json'</span>), <span class="hljs-comment">// The service account from Firebase console</span>
-  databaseURL: <span class="hljs-string">'https://&lt;APP_NAME&gt;.firebase.io'</span>
-});
-
-<span class="hljs-comment">// Send a simple notification</span>
-<span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> firebase.send({
-  registrationToken: <span class="hljs-string">'&lt; THE REGISTRATION TOKEN FOR THE SPECIFIC DEVICE OR ARRAY OF TOKENS &gt;'</span>,
-  title: <span class="hljs-string">'Hello World!'</span>,
-  body: <span class="hljs-string">'This is a simple notification message.'</span>,
-  sound: <span class="hljs-string">'&lt; the sound name &gt;'</span>,
-  color: <span class="hljs-string">'&lt; the color hex &gt;'</span>, <span class="hljs-comment">// Android only</span>
-  badge: <span class="hljs-string">'&lt; the count for the badge &gt;'</span>, <span class="hljs-comment">// iOS only</span>
-  <span class="hljs-comment">// More options in the TS typings...</span>
-});
-
-<span class="hljs-built_in">console</span>.log(response);</code></pre>
 				<p><br /></p>
 				<h2 id="documentation">Documentation</h2>
-				<p>See the <a href="https://devnup.github.io/ts-framework-notification">Full documentation</a> in Gihtub.</p>
+				<p>See the <a href="./docs">Full documentation</a> in Gihtub.</p>
 				<p><br /></p>
 				<h2 id="changelog">Changelog</h2>
 				<ul>
+					<li><strong>v2.4.0</strong>: Slack webhook transport</li>
+					<li><strong>v2.3.0</strong>: SMS Text transport</li>
+					<li><strong>v2.0.0</strong>: TS Framework common layer</li>
 					<li><strong>v1.2.0</strong>: Notification service layer</li>
 					<li><strong>v1.1.0</strong>: Firebase push notifications</li>
 					<li><strong>v1.0.0</strong>: Email templates notifications</li>
-				</ul>
-				<p><br /></p>
-				<h2 id="roadmap">Roadmap</h2>
-				<ul>
-					<li>Documentation for usage without Typescript (NodeJS 8+)</li>
-					<li>Push notifications (Firebase for iOS, Android and Web)<ul>
-							<li>[OK] Firebase simple notifications for iOS and Android</li>
-							<li>Firebase Data notifications for iOS and Android</li>
-							<li>Firebase Web notifications</li>
-						</ul>
-					</li>
-					<li>SMS notifications</li>
 				</ul>
 				<p><br /></p>
 				<h2 id="license">License</h2>
@@ -236,16 +105,19 @@ npm install --save git+https://github.com/devnup/ts-framework-notification.git<s
 						<a href="classes/basemessage.html" class="tsd-kind-icon">Base<wbr>Message</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/debugtextgateway.html" class="tsd-kind-icon">Debug<wbr>Text<wbr>Gateway</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/email.html" class="tsd-kind-icon">Email</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
 						<a href="classes/emailmessage.html" class="tsd-kind-icon">Email<wbr>Message</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
-						<a href="classes/emailservice.html" class="tsd-kind-icon">Email<wbr>Service</a>
+						<a href="classes/firebase.html" class="tsd-kind-icon">Firebase</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="classes/firebasemessage.html" class="tsd-kind-icon">Firebase<wbr>Message</a>
-					</li>
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="classes/firebaseservice.html" class="tsd-kind-icon">Firebase<wbr>Service</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="classes/notification.html" class="tsd-kind-icon">Notification</a>
@@ -254,10 +126,25 @@ npm install --save git+https://github.com/devnup/ts-framework-notification.git<s
 						<a href="classes/notificationservice.html" class="tsd-kind-icon">Notification<wbr>Service</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
-						<a href="classes/textmessage.html" class="tsd-kind-icon">Text<wbr>Message</a>
+						<a href="classes/slack.html" class="tsd-kind-icon">Slack</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
-						<a href="classes/textservice.html" class="tsd-kind-icon">Text<wbr>Service</a>
+						<a href="classes/slackattachment.html" class="tsd-kind-icon">Slack<wbr>Attachment</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/slackattachmentaction.html" class="tsd-kind-icon">Slack<wbr>Attachment<wbr>Action</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/slackattachmentfield.html" class="tsd-kind-icon">Slack<wbr>Attachment<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/slackmessage.html" class="tsd-kind-icon">Slack<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/text.html" class="tsd-kind-icon">Text</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/textmessage.html" class="tsd-kind-icon">Text<wbr>Message</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="classes/twiliotextgateway.html" class="tsd-kind-icon">Twilio<wbr>Text<wbr>Gateway</a>
@@ -267,6 +154,9 @@ npm install --save git+https://github.com/devnup/ts-framework-notification.git<s
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="interfaces/basetextgateway.html" class="tsd-kind-icon">Base<wbr>Text<wbr>Gateway</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="interfaces/debugtextgatewayoptions.html" class="tsd-kind-icon">Debug<wbr>Text<wbr>Gateway<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="interfaces/emailmessageschema.html" class="tsd-kind-icon">Email<wbr>Message<wbr>Schema</a>
@@ -290,6 +180,21 @@ npm install --save git+https://github.com/devnup/ts-framework-notification.git<s
 						<a href="interfaces/notificationserviceoptions.html" class="tsd-kind-icon">Notification<wbr>Service<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="interfaces/slackattachmentactionschema.html" class="tsd-kind-icon">Slack<wbr>Attachment<wbr>Action<wbr>Schema</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="interfaces/slackattachmentfieldschema.html" class="tsd-kind-icon">Slack<wbr>Attachment<wbr>Field<wbr>Schema</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="interfaces/slackattachmentschema.html" class="tsd-kind-icon">Slack<wbr>Attachment<wbr>Schema</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="interfaces/slackmessageschema.html" class="tsd-kind-icon">Slack<wbr>Message<wbr>Schema</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="interfaces/slackserviceoptions.html" class="tsd-kind-icon">Slack<wbr>Service<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="interfaces/textmessageschema.html" class="tsd-kind-icon">Text<wbr>Message<wbr>Schema</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
@@ -297,6 +202,9 @@ npm install --save git+https://github.com/devnup/ts-framework-notification.git<s
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="interfaces/twiliogatewayoptions.html" class="tsd-kind-icon">Twilio<wbr>Gateway<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-is-external">
+						<a href="globals.html#message" class="tsd-kind-icon">Message</a>
 					</li>
 				</ul>
 			</nav>

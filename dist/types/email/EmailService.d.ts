@@ -34,7 +34,7 @@ export interface EmailServiceOptions extends NotificationServiceOptions {
         defaultTemplate?: string;
     };
 }
-export default class EmailService extends NotificationService {
+export declare class Email extends NotificationService {
     readonly options: EmailServiceOptions;
     protected readonly transporter?: nodemailer.Transporter;
     protected readonly templateEngine?: Template;
@@ -43,7 +43,7 @@ export default class EmailService extends NotificationService {
      *
      * @param options The email service options
      */
-    constructor(options?: EmailServiceOptions);
+    constructor(options: EmailServiceOptions);
     /**
      * Verifies if the SMTP connection is OK.
      */
@@ -54,8 +54,4 @@ export default class EmailService extends NotificationService {
      * @param message The message options
      */
     send(message: EmailMessageSchema): Promise<any>;
-    onMount(): void;
-    onUnmount(): void;
-    onInit(): Promise<void>;
-    onReady(): Promise<void>;
 }

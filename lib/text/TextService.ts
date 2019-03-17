@@ -1,22 +1,25 @@
 import { NotificationService, NotificationServiceOptions } from '../base';
 import { BaseTextGateway, TextGateway } from './gateways/BaseTextGateway';
+import { DebugTextGateway } from './gateways/DebugTextGateway';
+import { TwilioTextGateway } from './gateways/TwilioTextGateway';
 import { TextMessageSchema } from './TextMessage';
 
 export interface TextServiceOptions extends NotificationServiceOptions {
   from?: string;
-  gateway: TextGateway;
+  debug?: boolean;
+  gateway?: TextGateway;
   gatewayOptions?: any;
 }
 
-export default class TextService extends NotificationService {
-  public options: TextServiceOptions;
+export class Text extends NotificationService {
+  public readonly options: TextServiceOptions;
   protected gatewayInstance?: BaseTextGateway;
 
   constructor(options: TextServiceOptions) {
     super({ name: 'TextService', ...options });
 
-    if (!this.options.gateway) {
-      throw new Error('No gateway supplied for the Text messages service');
+    if (!this.options.gateway && this.options.debug) {
+      this.options.gateway = TextGateway.DEBUG;
     }
   }
 
@@ -42,11 +45,8 @@ export default class TextService extends NotificationService {
     return this.gatewayInstance.send(message);
   }
 
-  async onMount() {
-  }
-  async onUnmount() {
-  }
-  async onInit() {
+  async onInit(server) {
+    super.onInit(server);
     // Handles twilio dynamic initialization
     if (this.options.gateway === TextGateway.TWILIO) {
       const { TwilioTextGateway } = await import('./gateways/TwilioTextGateway');
@@ -56,17 +56,10 @@ export default class TextService extends NotificationService {
         ...this.options.gatewayOptions,
       });
 
-      await (this.gatewayInstance as any).init();
+      await (this.gatewayInstance as TwilioTextGateway).init();
     } else if (this.options.gateway === TextGateway.DEBUG) {
       // Handles a debug gateway (console)
-      this.gatewayInstance = {
-        isReady: true,
-        async send(msg) {
-          this.logger.warn('TextService: Sending SMS as a warning in debug mode', JSON.stringify(msg, null, 2));
-        }
-      }
+      this.gatewayInstance = new DebugTextGateway();
     }
-  }
-  async onReady() {
   }
 }

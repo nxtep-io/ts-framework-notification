@@ -1,5 +1,5 @@
 import { Logger } from 'ts-framework-common';
-import { Text, TextGateway } from '../lib';
+import { Text, TextGateway } from '../../lib';
 
 const logger = Logger.getInstance();
 
