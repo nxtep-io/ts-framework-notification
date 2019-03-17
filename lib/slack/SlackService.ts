@@ -17,7 +17,7 @@ export class Slack extends NotificationService {
   public client: AxiosInstance;
   public logger: LoggerInstance;
 
-  constructor(options: SlackServiceOptions = {}) {
+  constructor(options: SlackServiceOptions) {
     super({ name: 'SlackService', ...options });
     this.client = Axios.create();
     this.logger = options.logger || Logger.getInstance();

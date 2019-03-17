@@ -29,7 +29,7 @@ describe('lib.services.Notification', () => {
   });
 
   it('should instantiate a Notification service with a debug text transport', async () => {
-    let service = new Notification({ text: { gateway: TextGateway.DEBUG } });
+    let service = new Notification({ text: { debug: true } });
 
     await service.onInit(null);
 

@@ -40,6 +40,7 @@
     "ts-framework-common": "nxtep-io/ts-framework-common#2.3.3"
   },
   "devDependencies": {
+    "@types/hat": "^0.0.0",
     "@types/jest": "^21.1.2",
     "coveralls": "^3.0.0",
     "cpx": "^1.5.0",

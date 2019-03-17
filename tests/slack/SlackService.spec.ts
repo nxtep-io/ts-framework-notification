@@ -18,6 +18,13 @@ describe('lib.services.Slack', () => {
     }));
 
     await service.onUnmount(null);
+    await service.onMount(null);
+    await service.onInit(null);
+
+    await service.send(new SlackMessage({
+      text: 'hello world 2',
+      username: 'ts-framework-notification',
+    }));
   });
 
   it('should send attachments with a debug slack transport', async () => {
