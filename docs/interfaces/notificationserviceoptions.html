@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>NotificationServiceOptions | ts-framework-notification (v2.3.0)</title>
+	<title>NotificationServiceOptions | ts-framework-notification (v2.4.0)</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">ts-framework-notification (v2.3.0)</a>
+					<a href="../index.html" class="title">ts-framework-notification (v2.4.0)</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="tsd-signature-type">ServiceOptions</span>
+						<span class="tsd-signature-type">ComponentGroupOptions</span>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">NotificationServiceOptions</span>
@@ -80,6 +80,9 @@
 									</li>
 									<li>
 										<a href="firebaseserviceoptions.html" class="tsd-signature-type">FirebaseServiceOptions</a>
+									</li>
+									<li>
+										<a href="slackserviceoptions.html" class="tsd-signature-type">SlackServiceOptions</a>
 									</li>
 									<li>
 										<a href="textserviceoptions.html" class="tsd-signature-type">TextServiceOptions</a>
@@ -100,6 +103,7 @@
 						<section class="tsd-index-section tsd-is-inherited tsd-is-external">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="notificationserviceoptions.html#children" class="tsd-kind-icon">children</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="notificationserviceoptions.html#logger" class="tsd-kind-icon">logger</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="notificationserviceoptions.html#name" class="tsd-kind-icon">name</a></li>
 							</ul>
@@ -109,6 +113,17 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-external">
 				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
+					<a name="children" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> children</h3>
+					<div class="tsd-signature tsd-kind-icon">children<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Component</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from ComponentGroupOptions.children</p>
+						<ul>
+							<li>Defined in /Users/luiseduardobrito/Projects/nxtep-io/ts-framework-notification/node_modules/ts-framework-common/dist/types/component/ComponentGroup.d.ts:6</li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
 					<a name="logger" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> logger</h3>
@@ -153,16 +168,19 @@
 						<a href="../classes/basemessage.html" class="tsd-kind-icon">Base<wbr>Message</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/debugtextgateway.html" class="tsd-kind-icon">Debug<wbr>Text<wbr>Gateway</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/email.html" class="tsd-kind-icon">Email</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
 						<a href="../classes/emailmessage.html" class="tsd-kind-icon">Email<wbr>Message</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
-						<a href="../classes/emailservice.html" class="tsd-kind-icon">Email<wbr>Service</a>
+						<a href="../classes/firebase.html" class="tsd-kind-icon">Firebase</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="../classes/firebasemessage.html" class="tsd-kind-icon">Firebase<wbr>Message</a>
-					</li>
-					<li class=" tsd-kind-class tsd-is-external">
-						<a href="../classes/firebaseservice.html" class="tsd-kind-icon">Firebase<wbr>Service</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="../classes/notification.html" class="tsd-kind-icon">Notification</a>
@@ -171,10 +189,25 @@
 						<a href="../classes/notificationservice.html" class="tsd-kind-icon">Notification<wbr>Service</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
-						<a href="../classes/textmessage.html" class="tsd-kind-icon">Text<wbr>Message</a>
+						<a href="../classes/slack.html" class="tsd-kind-icon">Slack</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
-						<a href="../classes/textservice.html" class="tsd-kind-icon">Text<wbr>Service</a>
+						<a href="../classes/slackattachment.html" class="tsd-kind-icon">Slack<wbr>Attachment</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/slackattachmentaction.html" class="tsd-kind-icon">Slack<wbr>Attachment<wbr>Action</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/slackattachmentfield.html" class="tsd-kind-icon">Slack<wbr>Attachment<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/slackmessage.html" class="tsd-kind-icon">Slack<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/text.html" class="tsd-kind-icon">Text</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="../classes/textmessage.html" class="tsd-kind-icon">Text<wbr>Message</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="../classes/twiliotextgateway.html" class="tsd-kind-icon">Twilio<wbr>Text<wbr>Gateway</a>
@@ -184,6 +217,9 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="basetextgateway.html" class="tsd-kind-icon">Base<wbr>Text<wbr>Gateway</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="debugtextgatewayoptions.html" class="tsd-kind-icon">Debug<wbr>Text<wbr>Gateway<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="emailmessageschema.html" class="tsd-kind-icon">Email<wbr>Message<wbr>Schema</a>
@@ -209,6 +245,9 @@
 						<a href="notificationserviceoptions.html" class="tsd-kind-icon">Notification<wbr>Service<wbr>Options</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
+								<a href="notificationserviceoptions.html#children" class="tsd-kind-icon">children</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
 								<a href="notificationserviceoptions.html#logger" class="tsd-kind-icon">logger</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
@@ -219,6 +258,21 @@
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="slackattachmentactionschema.html" class="tsd-kind-icon">Slack<wbr>Attachment<wbr>Action<wbr>Schema</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="slackattachmentfieldschema.html" class="tsd-kind-icon">Slack<wbr>Attachment<wbr>Field<wbr>Schema</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="slackattachmentschema.html" class="tsd-kind-icon">Slack<wbr>Attachment<wbr>Schema</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="slackmessageschema.html" class="tsd-kind-icon">Slack<wbr>Message<wbr>Schema</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
+						<a href="slackserviceoptions.html" class="tsd-kind-icon">Slack<wbr>Service<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="textmessageschema.html" class="tsd-kind-icon">Text<wbr>Message<wbr>Schema</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
@@ -226,6 +280,9 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="twiliogatewayoptions.html" class="tsd-kind-icon">Twilio<wbr>Gateway<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-is-external">
+						<a href="../globals.html#message" class="tsd-kind-icon">Message</a>
 					</li>
 				</ul>
 			</nav>

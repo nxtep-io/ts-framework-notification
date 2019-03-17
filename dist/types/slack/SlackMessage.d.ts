@@ -26,8 +26,8 @@ export declare class SlackMessage extends BaseMessage implements SlackMessageSch
             title_link: string;
             image_url: string;
             thumb_url: string;
-            fields: import("./attachment/SlackAttachmentField").SlackAttachmentField[];
-            actions: import("./attachment/SlackAttachmentAction").SlackAttachmentAction[];
+            fields: import("./attachment").SlackAttachmentField[];
+            actions: import("./attachment").SlackAttachmentAction[];
         } & Pick<SlackAttachment, "title" | "color" | "fallback" | "pretext" | "text" | "toJSON">))[];
     } & Pick<this, Exclude<keyof this, "attachments">>;
 }

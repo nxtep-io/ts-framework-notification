@@ -5,7 +5,7 @@ export interface BaseMessageSchema {
   _type?: string;
 }
 
-export default abstract class BaseMessage {
+export abstract class BaseMessage {
   _id?: string;
   _type: string;
 

@@ -1,6 +1,6 @@
 {
   "name": "ts-framework-notification",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "A minimalistic web framework for TS",
   "author": "Luis Brito <luis@devnup.com>",
   "license": "MIT",
@@ -30,11 +30,9 @@
   "dependencies": {
     "@types/email-templates": "^3.1.0",
     "@types/nodemailer": "^4.3.1",
-    "@types/twilio": "^0.0.9",
     "axios": "^0.18.0",
     "ejs": "^2.5.7",
     "email-templates": "^3.1.7",
-    "firebase-admin": "^7.0.0",
     "nodemailer": "^4.4.0",
     "rimraf": "^2.6.2",
     "ts-framework-common": "nxtep-io/ts-framework-common#2.3.3"
@@ -56,6 +54,8 @@
     "typescript": "^3.3.3333"
   },
   "optionalDependencies": {
+    "@types/twilio": "^0.0.10",
+    "firebase-admin": "^7.1.0",
     "twilio": "^3.17.3"
   }
 }

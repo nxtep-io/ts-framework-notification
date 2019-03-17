@@ -2,7 +2,7 @@ import { ComponentGroup, ComponentGroupOptions } from "ts-framework-common";
 import { BaseMessageSchema } from './BaseMessage';
 export interface NotificationServiceOptions extends ComponentGroupOptions {
 }
-export default abstract class NotificationService extends ComponentGroup {
+export declare abstract class NotificationService extends ComponentGroup {
     options: NotificationServiceOptions;
     /**
      * Instantiates a new Notification service.

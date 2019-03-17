@@ -3,7 +3,8 @@ import { BaseTextGateway, TextGateway } from './gateways/BaseTextGateway';
 import { TextMessageSchema } from './TextMessage';
 export interface TextServiceOptions extends NotificationServiceOptions {
     from?: string;
-    gateway: TextGateway;
+    debug?: boolean;
+    gateway?: TextGateway;
     gatewayOptions?: any;
 }
 export declare class Text extends NotificationService {

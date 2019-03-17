@@ -4,7 +4,7 @@ import { BaseMessageSchema } from './BaseMessage';
 export interface NotificationServiceOptions extends ComponentGroupOptions {
 }
 
-export default abstract class NotificationService extends ComponentGroup {
+export abstract class NotificationService extends ComponentGroup {
   /**
    * Instantiates a new Notification service.
    * 

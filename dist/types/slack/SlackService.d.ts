@@ -12,7 +12,7 @@ export declare class Slack extends NotificationService {
     readonly options: SlackServiceOptions;
     client: AxiosInstance;
     logger: LoggerInstance;
-    constructor(options?: SlackServiceOptions);
+    constructor(options: SlackServiceOptions);
     onMount(server: any): Promise<void>;
     onUnmount(server: any): Promise<void>;
     /**

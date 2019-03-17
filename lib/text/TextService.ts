@@ -1,8 +1,8 @@
 import { NotificationService, NotificationServiceOptions } from '../base';
 import { BaseTextGateway, TextGateway } from './gateways/BaseTextGateway';
-import { TextMessageSchema } from './TextMessage';
 import { DebugTextGateway } from './gateways/DebugTextGateway';
 import { TwilioTextGateway } from './gateways/TwilioTextGateway';
+import { TextMessageSchema } from './TextMessage';
 
 export interface TextServiceOptions extends NotificationServiceOptions {
   from?: string;
