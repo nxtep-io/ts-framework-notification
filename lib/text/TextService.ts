@@ -10,9 +10,10 @@ export interface TextServiceOptions extends NotificationServiceOptions {
 }
 
 export class Text extends NotificationService {
+  public readonly options: TextServiceOptions;
   protected gatewayInstance?: BaseTextGateway;
 
-  constructor(public readonly options: TextServiceOptions) {
+  constructor(options: TextServiceOptions) {
     super({ name: 'TextService', ...options });
 
     if (!this.options.gateway) {

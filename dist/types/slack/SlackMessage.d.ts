@@ -15,6 +15,7 @@ export declare class SlackMessage extends BaseMessage implements SlackMessageSch
     to?: string;
     text: string;
     username?: string;
+    webhookUrl?: string;
     attachments?: SlackAttachment[];
     constructor(data: SlackMessageSchema);
     toJSON(): {

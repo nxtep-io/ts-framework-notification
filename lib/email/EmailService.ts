@@ -43,6 +43,7 @@ export interface EmailServiceOptions extends NotificationServiceOptions {
 }
 
 export class Email extends NotificationService {
+  public readonly options: EmailServiceOptions;
   protected readonly transporter?: nodemailer.Transporter;
   protected readonly templateEngine?: Template;
 
@@ -51,8 +52,8 @@ export class Email extends NotificationService {
    * 
    * @param options The email service options
    */
-  constructor(public readonly options: EmailServiceOptions = {}) {
-    super(options);
+  constructor(options: EmailServiceOptions) {
+    super({ name: 'EmailService', ...options });
 
     if (options.transporter) {
       // Transporter instance was given to the constructor

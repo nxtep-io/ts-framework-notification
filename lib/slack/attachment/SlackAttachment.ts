@@ -40,7 +40,7 @@ export class SlackAttachment implements SlackAttachmentSchema {
   }
 
   public toJSON() {
-    const { fields = [], actions = [], imageUrl, thumbUrl, authorName, authorLink, authorIcon, titleLink, ...otherProps } = this;
+    const { fields, actions, imageUrl, thumbUrl, authorName, authorLink, authorIcon, titleLink, ...otherProps } = this;
 
     return {
       author_name: authorName,
@@ -49,8 +49,8 @@ export class SlackAttachment implements SlackAttachmentSchema {
       title_link: titleLink,
       image_url: imageUrl,
       thumb_url: thumbUrl,
-      fields: fields.map(field => field.toJSON ? field.toJSON() : field),
-      actions: actions.map(action => action.toJSON ? action.toJSON() : action),
+      fields: fields.map(field => field.toJSON()),
+      actions: actions.map(action => action.toJSON()),
       ...otherProps,
     }
   }

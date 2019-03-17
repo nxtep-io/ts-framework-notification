@@ -18,14 +18,36 @@ describe('lib.services.FirebaseService', () => {
   it('should intantiate a simple debug instance', async () => {
     const firebase = new Firebase({ debug: true });
     expect(firebase).toBeTruthy();
-    expect(firebase.sdk).toBeUndefined();
+    expect(firebase['sdk']).toBeUndefined();
   });
 
-  it('should intantiate a simple debug instance in verbose mode and send simple notification', async () => {
-    const firebase = new Firebase({ debug: true, verbose: true });
+  it('should intantiate a simple debug instance and send simple notification', async () => {
+    const firebase = new Firebase({ debug: true });
     expect(firebase).toBeTruthy();
-    expect(firebase.sdk).toBeUndefined();
+    expect(firebase['sdk']).toBeUndefined();
     expect(async () => await firebase.send({ registrationToken: hat(), body: 'Unit test', sample: 'true' })).not.toThrow();
+  });
+
+  it('should intantiate a simple debug instance and send full notification', async () => {
+    const firebase = new Firebase({ debug: true });
+    expect(firebase).toBeTruthy();
+    expect(firebase['sdk']).toBeUndefined();
+    expect(async () => await firebase.send({
+      registrationToken: hat(),
+      body: 'Unit test',
+      sample: 'true',
+      title: 'sample',
+      sound: 'sample',
+      titleLocArgs: 'sample',
+      titleLocKey: 'sample',
+      bodyLocArgs: 'sample',
+      bodyLocKey: 'sample',
+      clickAction: 'sample',
+      tag: 'sample',
+      icon: 'sample',
+      color: 'sample',
+      badge: '1',
+    })).not.toThrow();
   });
 
 });

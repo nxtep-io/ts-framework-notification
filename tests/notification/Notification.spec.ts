@@ -38,4 +38,40 @@ describe('lib.services.Notification', () => {
       text: 'Sample text for Unit Testing'
     }));
   });
+
+  it('should instantiate a Notification service with a debug slack transport', async () => {
+    let service = new Notification({ slack: { debug: true } });
+
+    await service.onInit(null);
+
+    await service.send(new Notification.SlackMessage({
+      text: 'hello world',
+      username: 'ts-framework-notification',
+      attachments: [{
+        color: 'warning',
+        text: 'everything look ok!',
+        fallback: 'everything look ok!',
+        thumbUrl: 'http://i.pravatar.cc/300',
+        fields: [{
+          title: 'Name',
+          value: 'John Doe',
+        }, {
+          title: 'Email',
+          value: 'john@example.com',
+        }],
+        actions: [{
+          type: 'button',
+          text: 'See Profile',
+          url: 'https://github.com',
+          fallback: 'See profile',
+        }, {
+          type: 'button',
+          text: 'Block User',
+          url: 'https://github.com',
+          fallback: 'Accept User',
+          style: 'primary',
+        }]
+      }]
+    }));
+  });
 });

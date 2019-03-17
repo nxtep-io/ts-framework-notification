@@ -15,19 +15,14 @@ export interface NotificationOptions extends NotificationServiceOptions {
 }
 
 export class Notification extends NotificationService {
-  // transports: {
-  //   email?: Email
-  //   firebase?: Firebase
-  //   text?: Text
-  //   slack?: Slack
-  // }
+  public readonly options: NotificationOptions;
 
   static EmailMessage = EmailMessage;
   static FirebaseMessage = FirebaseMessage;
   static TextMessage = TextMessage;
   static SlackMessage = SlackMessage;
 
-  constructor(public readonly options: NotificationOptions) {
+  constructor(options: NotificationOptions) {
     super(options);
     const available = ['email', 'firebase', 'text', 'slack'];
     const requested = Object.keys(this.options).filter(key => available.indexOf(key) >= 0);
@@ -56,7 +51,7 @@ export class Notification extends NotificationService {
 
     // Initialize the slack transport, if available
     if (this.options.slack) {
-      this.component(new Slack(this.options.text));
+      this.component(new Slack(this.options.slack));
     }
   }
 

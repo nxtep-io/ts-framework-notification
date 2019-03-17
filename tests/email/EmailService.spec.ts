@@ -13,6 +13,19 @@ describe('lib.services.Email', () => {
     expect(() => new Email({ from: 'test@company.com' })).toThrowError(/connectionUrl/);
   });
 
+  it('should crash without a valid connection URL', async () => {
+    const email = new Email({
+      from: 'test@company.com',
+      connectionUrl: 'smtp://invalid:user@localhost:1234'
+    });
+
+    await expect(email.send({
+      to: 'test@company.com',
+      subject: 'Unit test',
+      text: 'This is an automated test'
+    })).rejects.toThrow(/SMTP connectionUrl may be invalid or unavailable/ig)
+  });
+
   it('should not crash without a valid configuration but in debug mode', async () => {
     const email = new Email({ from: 'test@company.com', debug: true });
     expect(await email.isReady()).toBe(false);
@@ -22,18 +35,7 @@ describe('lib.services.Email', () => {
     const email = new Email({ from: 'test@company.com', debug: true });
     expect(await email.isReady()).toBe(false);
 
-    email.send({
-      to: 'test@company.com',
-      subject: 'Unit test',
-      text: 'This is an automated test'
-    });
-  });
-
-  it('should not crash without a valid configuration but in debug and verbose mode', async () => {
-    const email = new Email({ from: 'test@company.com', debug: true, verbose: true });
-    expect(await email.isReady()).toBe(false);
-
-    email.send({
+    await email.send({
       to: 'test@company.com',
       subject: 'Unit test',
       text: 'This is an automated test'
@@ -49,10 +51,30 @@ describe('lib.services.Email', () => {
       }
     });
 
-    email.send({
+    await email.send({
       to: 'test@company.com',
       subject: 'Unit test',
       text: 'This is an automated test'
+    });
+  });
+
+  it('should send a template engine based email with a valid transporter', async () => {
+    const email = new Email({
+      from: 'test@company.com',
+      transporter: new MockTransport({}) as any,
+      template: {
+        enabled: true
+      }
+    });
+
+    await email.send({
+      to: 'test@company.com',
+      subject: 'Unit test',
+      text: 'This is an automated test',
+      locals: {
+        title: 'Sample',
+        body: 'Sample',
+      },
     });
   });
 });

@@ -18,6 +18,7 @@ export class SlackMessage extends BaseMessage implements SlackMessageSchema {
   to?: string;
   text: string;
   username?: string;
+  webhookUrl?: string;
   attachments?: SlackAttachment[];
 
   constructor(data: SlackMessageSchema) {

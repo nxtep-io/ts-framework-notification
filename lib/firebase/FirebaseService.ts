@@ -34,10 +34,11 @@ export interface FirebaseTransportOptions {
 }
 
 export class Firebase extends NotificationService {
+  public readonly options: FirebaseServiceOptions;
   protected sdk: FirebaseSDK.app.App
 
-  constructor(public readonly options: FirebaseServiceOptions) {
-    super(options);
+  constructor(options: FirebaseServiceOptions) {
+    super({ name: 'FirebaseService', ...options });
 
     // Initialize the Firebase Admin SDK
     if (options.serviceAccount && options.databaseURL) {

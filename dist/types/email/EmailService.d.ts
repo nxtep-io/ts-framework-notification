@@ -43,7 +43,7 @@ export declare class Email extends NotificationService {
      *
      * @param options The email service options
      */
-    constructor(options?: EmailServiceOptions);
+    constructor(options: EmailServiceOptions);
     /**
      * Verifies if the SMTP connection is OK.
      */
