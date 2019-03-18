@@ -23,7 +23,7 @@ export class Notification extends NotificationService {
   static SlackMessage = SlackMessage;
 
   constructor(options: NotificationOptions) {
-    super(options);
+    super({ name: 'NotificationService', ...options });
     const available = ['email', 'firebase', 'text', 'slack'];
     const requested = Object.keys(this.options).filter(key => available.indexOf(key) >= 0);
 
@@ -31,8 +31,6 @@ export class Notification extends NotificationService {
     if (requested.length === 0) {
       throw new Error('No transports configured, you need to specifiy at least one debug service to use the Notification layer.');
     }
-
-    const children = [];
 
     // Initialize the email transport, if available
     if (this.options.email) {

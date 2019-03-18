@@ -9,7 +9,7 @@ const slack = new Slack({
 
 setTimeout(async () => {
   try {
-    await slack.onInit();
+    await slack.onInit(null);
 
     const response = await slack.send({
       text: 'hello world',
