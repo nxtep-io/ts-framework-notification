@@ -1,7 +1,8 @@
-import * as hat from 'hat';
+import { Logger } from 'ts-framework-common';
 import { Text, TextGateway, TextMessage } from "../../lib";
 
 describe('lib.services.Text', () => {
+  Logger.initialize();
 
   it('should instantiate a simple text message', async () => {
     const message = new TextMessage({ to: '+5511987654321', text: 'Unit test' });
@@ -28,8 +29,8 @@ describe('lib.services.Text', () => {
   });
 
   it('should not crash initializing Twilio with a valid configuration', async () => {
-    const text = new Text({ 
-      gateway: TextGateway.TWILIO,  
+    const text = new Text({
+      gateway: TextGateway.TWILIO,
       gatewayOptions: {
         accountSid: 'ACabf01714c5eac8942652c576388c70eb',
         authToken: '0e076aee34c8171a769836faebd371ca',
@@ -62,8 +63,8 @@ describe('lib.services.Text', () => {
   });
 
   it('should not send invalid Twilio set of credentials', async () => {
-    const text = new Text({ 
-      gateway: TextGateway.TWILIO,  
+    const text = new Text({
+      gateway: TextGateway.TWILIO,
       gatewayOptions: {
         accountSid: 'ACabf01714c5eac8942652c576388c70eb',
         authToken: '0e076aee34c8171a769836faebd371ca',

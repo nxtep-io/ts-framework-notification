@@ -1,7 +1,9 @@
+import { Logger } from 'ts-framework-common';
 import { Email, EmailMessage } from "../../lib";
 import MockTransport from "../util/MockTransport";
 
 describe('lib.services.Email', () => {
+  Logger.initialize();
 
   it('should instantiate a simple firebase message', async () => {
     const message = new EmailMessage({ to: 'test@company.com', subject: 'Unit test', text: 'Unit test' });

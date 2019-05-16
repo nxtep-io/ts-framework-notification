@@ -1,7 +1,9 @@
 import * as hat from 'hat';
+import { Logger } from 'ts-framework-common';
 import { Firebase, FirebaseMessage } from "../../lib";
 
 describe('lib.services.FirebaseService', () => {
+  Logger.initialize();
 
   it('should instantiate a simple firebase message', async () => {
     const registrationToken = hat();

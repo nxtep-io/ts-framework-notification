@@ -1,7 +1,10 @@
 import * as hat from 'hat';
-import Notification, { TextGateway } from "../../lib";
+import { Logger } from 'ts-framework-common';
+import Notification from "../../lib";
 
 describe('lib.services.Notification', () => {
+  Logger.initialize();
+
   it('should not instantiate a Notification service without any transports', async () => {
     expect(() => new Notification({})).toThrow(/No transports configured/);
   });

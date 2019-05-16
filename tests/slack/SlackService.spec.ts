@@ -1,6 +1,9 @@
+import { Logger } from 'ts-framework-common';
 import { Slack, SlackMessage } from "../../lib";
 
 describe('lib.services.Slack', () => {
+  Logger.initialize();
+  
   it('should crash without a valid configuration', async () => {
     const slack = new Slack({});
     await expect(slack.send({ text: ''})).rejects.toThrowError(/Webhook url not supplied/ig);
