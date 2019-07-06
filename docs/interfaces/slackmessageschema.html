@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SlackMessageSchema | ts-framework-notification (v2.4.3)</title>
+	<title>SlackMessageSchema | ts-framework-notification (v2.5.0)</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">ts-framework-notification (v2.4.3)</a>
+					<a href="../index.html" class="title">ts-framework-notification (v2.5.0)</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -94,13 +94,13 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="slackmessageschema.html#_id" class="tsd-kind-icon">_id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="slackmessageschema.html#_type" class="tsd-kind-icon">_type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="slackmessageschema.html#as_user" class="tsd-kind-icon">as_<wbr>user</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="slackmessageschema.html#attachments" class="tsd-kind-icon">attachments</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="slackmessageschema.html#iconemoji" class="tsd-kind-icon">icon<wbr>Emoji</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="slackmessageschema.html#iconurl" class="tsd-kind-icon">icon<wbr>Url</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="slackmessageschema.html#text" class="tsd-kind-icon">text</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="slackmessageschema.html#to" class="tsd-kind-icon">to</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="slackmessageschema.html#username" class="tsd-kind-icon">username</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="slackmessageschema.html#webhookurl" class="tsd-kind-icon">webhook<wbr>Url</a></li>
 							</ul>
 						</section>
 					</div>
@@ -115,7 +115,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basemessageschema.html">BaseMessageSchema</a>.<a href="basemessageschema.html#_id">_id</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/a5e7a5d/lib/base/BaseMessage.ts#L4">base/BaseMessage.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/02de97a/lib/base/BaseMessage.ts#L4">base/BaseMessage.ts:4</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -126,7 +126,17 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basemessageschema.html">BaseMessageSchema</a>.<a href="basemessageschema.html#_type">_type</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/a5e7a5d/lib/base/BaseMessage.ts#L5">base/BaseMessage.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/02de97a/lib/base/BaseMessage.ts#L5">base/BaseMessage.ts:5</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+					<a name="as_user" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> as_<wbr>user</h3>
+					<div class="tsd-signature tsd-kind-icon">as_<wbr>user<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/02de97a/lib/slack/SlackMessage.ts#L11">slack/SlackMessage.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -136,7 +146,7 @@
 					<div class="tsd-signature tsd-kind-icon">attachments<span class="tsd-signature-symbol">:</span> <a href="slackattachmentschema.html" class="tsd-signature-type">SlackAttachmentSchema</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/a5e7a5d/lib/slack/SlackMessage.ts#L12">slack/SlackMessage.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/02de97a/lib/slack/SlackMessage.ts#L12">slack/SlackMessage.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -146,7 +156,7 @@
 					<div class="tsd-signature tsd-kind-icon">icon<wbr>Emoji<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/a5e7a5d/lib/slack/SlackMessage.ts#L10">slack/SlackMessage.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/02de97a/lib/slack/SlackMessage.ts#L10">slack/SlackMessage.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -156,7 +166,7 @@
 					<div class="tsd-signature tsd-kind-icon">icon<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/a5e7a5d/lib/slack/SlackMessage.ts#L9">slack/SlackMessage.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/02de97a/lib/slack/SlackMessage.ts#L9">slack/SlackMessage.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -166,7 +176,7 @@
 					<div class="tsd-signature tsd-kind-icon">text<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/a5e7a5d/lib/slack/SlackMessage.ts#L7">slack/SlackMessage.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/02de97a/lib/slack/SlackMessage.ts#L7">slack/SlackMessage.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -176,7 +186,7 @@
 					<div class="tsd-signature tsd-kind-icon">to<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/a5e7a5d/lib/slack/SlackMessage.ts#L6">slack/SlackMessage.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/02de97a/lib/slack/SlackMessage.ts#L6">slack/SlackMessage.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -186,17 +196,7 @@
 					<div class="tsd-signature tsd-kind-icon">username<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/a5e7a5d/lib/slack/SlackMessage.ts#L8">slack/SlackMessage.ts:8</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a name="webhookurl" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> webhook<wbr>Url</h3>
-					<div class="tsd-signature tsd-kind-icon">webhook<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/a5e7a5d/lib/slack/SlackMessage.ts#L11">slack/SlackMessage.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/nxtep-io/ts-framework-notification/blob/02de97a/lib/slack/SlackMessage.ts#L8">slack/SlackMessage.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -317,6 +317,9 @@
 								<a href="slackmessageschema.html#_type" class="tsd-kind-icon">_type</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+								<a href="slackmessageschema.html#as_user" class="tsd-kind-icon">as_<wbr>user</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
 								<a href="slackmessageschema.html#attachments" class="tsd-kind-icon">attachments</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
@@ -333,9 +336,6 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
 								<a href="slackmessageschema.html#username" class="tsd-kind-icon">username</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-								<a href="slackmessageschema.html#webhookurl" class="tsd-kind-icon">webhook<wbr>Url</a>
 							</li>
 						</ul>
 					</li>

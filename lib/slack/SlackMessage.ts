@@ -8,7 +8,7 @@ export interface SlackMessageSchema extends BaseMessageSchema {
   username?: string;
   iconUrl?: string;
   iconEmoji?: string;
-  webhookUrl?: string;
+  as_user?: boolean;
   attachments?: SlackAttachmentSchema[];
 }
 
@@ -18,7 +18,7 @@ export class SlackMessage extends BaseMessage implements SlackMessageSchema {
   to?: string;
   text: string;
   username?: string;
-  webhookUrl?: string;
+  as_user?: boolean;
   attachments?: SlackAttachment[];
 
   constructor(data: SlackMessageSchema) {
@@ -29,10 +29,11 @@ export class SlackMessage extends BaseMessage implements SlackMessageSchema {
   }
 
   public toJSON() {
-    const { attachments = [], ...otherProps } = this;
+    const { to, attachments = [], ...otherProps } = this;
 
     return {
       attachments: attachments.map(a => a.toJSON ? a.toJSON() : a),
+      channel: to,
       ...otherProps,
     }
   }

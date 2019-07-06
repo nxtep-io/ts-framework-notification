@@ -6,7 +6,7 @@ export interface SlackMessageSchema extends BaseMessageSchema {
     username?: string;
     iconUrl?: string;
     iconEmoji?: string;
-    webhookUrl?: string;
+    as_user?: boolean;
     attachments?: SlackAttachmentSchema[];
 }
 export declare class SlackMessage extends BaseMessage implements SlackMessageSchema {
@@ -15,7 +15,7 @@ export declare class SlackMessage extends BaseMessage implements SlackMessageSch
     to?: string;
     text: string;
     username?: string;
-    webhookUrl?: string;
+    as_user?: boolean;
     attachments?: SlackAttachment[];
     constructor(data: SlackMessageSchema);
     toJSON(): {
@@ -29,5 +29,6 @@ export declare class SlackMessage extends BaseMessage implements SlackMessageSch
             fields: import("./attachment").SlackAttachmentField[];
             actions: import("./attachment").SlackAttachmentAction[];
         } & Pick<SlackAttachment, "title" | "color" | "fallback" | "pretext" | "text" | "toJSON">))[];
-    } & Pick<this, Exclude<keyof this, "attachments">>;
+        channel: string;
+    } & Pick<this, Exclude<keyof this, "attachments" | "to">>;
 }

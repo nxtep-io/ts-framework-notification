@@ -1,7 +1,7 @@
 import { Logger } from 'ts-framework-common';
 import { Text, TextGateway } from '../../lib';
 
-const logger = Logger.getInstance();
+const logger = Logger.initialize();
 
 const text = new Text({
   from: process.env.SMS_FROM,
@@ -14,7 +14,7 @@ const text = new Text({
 
 setTimeout(async () => {
   try {
-    await text.onInit();
+    await text.onInit(null);
 
     const response = await text.send({
       to: process.env.SMS_TO,

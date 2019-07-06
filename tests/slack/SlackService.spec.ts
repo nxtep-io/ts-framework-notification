@@ -3,11 +3,6 @@ import { Slack, SlackMessage } from "../../lib";
 
 describe('lib.services.Slack', () => {
   Logger.initialize();
-  
-  it('should crash without a valid configuration', async () => {
-    const slack = new Slack({});
-    await expect(slack.send({ text: ''})).rejects.toThrowError(/Webhook url not supplied/ig);
-  });
 
   it('should send a simple message with a debug slack transport', async () => {
     let service = new Slack({ debug: true });

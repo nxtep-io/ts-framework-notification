@@ -1,7 +1,7 @@
 import { Logger } from 'ts-framework-common';
 import { Email } from '../../lib';
 
-const logger = Logger.getInstance();
+const logger = Logger.initialize();
 
 const email = new Email({
   from: process.env.SMTP_FROM,

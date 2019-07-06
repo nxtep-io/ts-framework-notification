@@ -7,20 +7,24 @@ import { SlackMessage, SlackMessageSchema } from "./SlackMessage";
 
 export interface SlackServiceOptions extends NotificationServiceOptions {
   logger?: LoggerInstance;
-  webhookUrl?: string;
-  channel?: string;
   debug?: boolean;
+  channel?: string;
+  apiUrl?: string;
+  accessToken?: string;
+  webhookUrl?: string;
 }
 
 export class Slack extends NotificationService {
   public readonly options: SlackServiceOptions;
   public client: AxiosInstance;
   public logger: LoggerInstance;
+  public apiUrl: string;
 
   constructor(options: SlackServiceOptions) {
     super({ name: 'SlackService', ...options });
     this.client = Axios.create();
     this.logger = options.logger || Logger.getInstance();
+    this.apiUrl = options.apiUrl || 'https://slack.com/api/chat.postMessage';
   }
 
   async onMount(server) {
@@ -40,7 +44,9 @@ export class Slack extends NotificationService {
    */
   public async send(message: SlackMessageSchema): Promise<any> {
     const data = new SlackMessage(message);
-    const url = data.webhookUrl || (this.options && this.options.webhookUrl);
+
+    // Prefer webhook url for backwards compatibility
+    const url = this.options.webhookUrl || this.apiUrl;
 
     if (this.options.debug) {
       // Logs the notification body in the console as a debug log
@@ -53,7 +59,12 @@ export class Slack extends NotificationService {
       throw new BaseError("Webhook url not supplied");
     }
 
-    const response = await this.client.post(url, { ...data.toJSON() });
+    // Post to desired url, passing access token whenever available
+    const response = await this.client.post(url, { ...data.toJSON() }, {
+      headers: this.options.accessToken ? {
+        'Authorization': `Bearer ${this.options.accessToken}`
+      } : {}
+    });
 
     if (response.status !== 200) {
       throw new BaseError((response.data && response.data.message) || "Error attempting to post message on slack");

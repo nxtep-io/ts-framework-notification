@@ -1,10 +1,10 @@
 import { Logger } from 'ts-framework-common';
 import { Slack } from '../../lib';
 
-const logger = Logger.getInstance();
+const logger = Logger.initialize();
 
 const slack = new Slack({
-  webhookUrl: 'https://hooks.slack.com/services/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',
+  webhookUrl: process.env.SLACK_URL,
 });
 
 setTimeout(async () => {
