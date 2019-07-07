@@ -1,11 +1,9 @@
-import { Email, EmailServiceOptions, EmailMessage } from './email';
-import { Firebase, FirebaseMessage, FirebaseServiceOptions } from './firebase';
+import { Notification, NotificationOptions } from './Notification';
 
-export { Email, EmailMessage, EmailServiceOptions };
-export { Firebase, FirebaseMessage, FirebaseServiceOptions };
+export * from './email';
+export * from './firebase';
+export * from './slack';
+export * from './text';
+export { NotificationOptions };
 
-import { default as Notification, NotificationOptions } from './Notification';
-
-export { Notification, NotificationOptions };
-
-export default { Notification, Email, Firebase };
+export default Notification;

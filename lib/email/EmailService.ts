@@ -1,10 +1,9 @@
-import * as path from 'path';
-import { Logger, BaseError } from 'ts-framework-common';
-import * as nodemailer from 'nodemailer';
 import * as Template from 'email-templates';
-import { TransportTypes } from '../types';
+import * as nodemailer from 'nodemailer';
+import * as path from 'path';
+import { BaseError, LoggerInstance } from 'ts-framework-common';
 import { NotificationService, NotificationServiceOptions } from '../base';
-import EmailMessage, { EmailMessageSchema } from './EmailMessage';
+import { EmailMessage, EmailMessageSchema } from './EmailMessage';
 
 export interface EmailServiceOptions extends NotificationServiceOptions {
   /**
@@ -15,7 +14,7 @@ export interface EmailServiceOptions extends NotificationServiceOptions {
   /**
    * The logger instance for the service.
    */
-  logger?: Logger;
+  logger?: LoggerInstance;
 
   /**
    * E-mails will be sent to console whenever the connectionUrl is not available if debug is "true".
@@ -43,7 +42,8 @@ export interface EmailServiceOptions extends NotificationServiceOptions {
   }
 }
 
-export default class EmailService extends NotificationService {
+export class Email extends NotificationService {
+  public readonly options: EmailServiceOptions;
   protected readonly transporter?: nodemailer.Transporter;
   protected readonly templateEngine?: Template;
 
@@ -52,8 +52,8 @@ export default class EmailService extends NotificationService {
    * 
    * @param options The email service options
    */
-  constructor(public readonly options: EmailServiceOptions = {}) {
-    super(options);
+  constructor(options: EmailServiceOptions) {
+    super({ name: 'EmailService', ...options });
 
     if (options.transporter) {
       // Transporter instance was given to the constructor
@@ -143,17 +143,5 @@ export default class EmailService extends NotificationService {
         throw new BaseError(errorMessage);
       }
     }
-  }
-
-  onMount() {
-  }
-
-  onUnmount() {
-  }
-
-  async onInit() {
-  }
-
-  async onReady() {
   }
 }

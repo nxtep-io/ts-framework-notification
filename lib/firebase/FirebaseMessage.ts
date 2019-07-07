@@ -30,7 +30,7 @@ export interface FirebaseMessageSchema extends BaseMessageSchema {
 /**
  * Reference: https://firebase.google.com/docs/reference/admin/node/admin.messaging.NotificationMessagePayload
  */
-export default class FirebaseMessage extends BaseMessage implements FirebaseMessageSchema {
+export class FirebaseMessage extends BaseMessage implements FirebaseMessageSchema {
   _id: string;
   _type: string;
   registrationToken: string;

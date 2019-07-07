@@ -13,7 +13,7 @@ export interface EmailMessageSchema extends BaseMessageSchema {
   template?: string;
 }
 
-export default class EmailMessage extends BaseMessage implements EmailMessageSchema {
+export class EmailMessage extends BaseMessage implements EmailMessageSchema {
   _id?: string;
   _type: string;
   from?: string;
@@ -28,14 +28,6 @@ export default class EmailMessage extends BaseMessage implements EmailMessageSch
 
   constructor(data: EmailMessageSchema) {
     super({ ...data, type: TransportTypes.EMAIL });
-    this.from = data.from;
-    this.to = data.to;
-    this.subject = data.subject;
-    this.text = data.text;
-    this.html = data.html;
-    this.cc = data.cc;
-    this.bcc = data.bcc;
-    this.locals = data.locals;
-    this.template = data.template;
+    Object.assign(this, data);
   }
 }

@@ -10,7 +10,7 @@ export interface EmailMessageSchema extends BaseMessageSchema {
     locals?: any;
     template?: string;
 }
-export default class EmailMessage extends BaseMessage implements EmailMessageSchema {
+export declare class EmailMessage extends BaseMessage implements EmailMessageSchema {
     _id?: string;
     _type: string;
     from?: string;
