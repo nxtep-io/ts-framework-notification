@@ -39,6 +39,8 @@ export interface EmailServiceOptions extends NotificationServiceOptions {
     engine?: string;
     enabled: boolean;
     defaultTemplate?: string;
+    send?: boolean;
+    preview?: boolean;
   }
 }
 
@@ -88,7 +90,9 @@ export class Email extends NotificationService {
           options: {
             extension: this.options.template.engine || 'ejs'
           }
-        }
+        },
+        send: this.options.template.send,
+        preview: this.options.template.preview,
       });
     }
   }
