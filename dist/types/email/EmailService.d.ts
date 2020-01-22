@@ -32,6 +32,8 @@ export interface EmailServiceOptions extends NotificationServiceOptions {
         engine?: string;
         enabled: boolean;
         defaultTemplate?: string;
+        send?: boolean;
+        preview?: boolean;
     };
 }
 export declare class Email extends NotificationService {

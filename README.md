@@ -15,6 +15,8 @@ See the [Full documentation](./docs) in Gihtub.
 
 ## Changelog
 
+- **v2.6.0**: Allow "preview" and "send" to be sent as parameters to templateEngine !4
+- **v2.5.0**: Use slack api for bots and users
 - **v2.4.0**: Slack webhook transport
 - **v2.3.0**: SMS Text transport
 - **v2.0.0**: TS Framework common layer

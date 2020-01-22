@@ -1,6 +1,6 @@
 {
   "name": "ts-framework-notification",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "A minimalistic web framework for TS",
   "author": "Luis Brito <luis@devnup.com>",
   "license": "MIT",
@@ -22,10 +22,6 @@
     "coveralls": "((cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js) || true)",
     "docs": "./scripts/docs.sh",
     "precommit": "npm test"
-  },
-  "resolutions": {
-    "**/chokidar/fsevents": "1.2.4",
-    "**/fsevents": "1.2.4"
   },
   "dependencies": {
     "@types/email-templates": "^3.1.0",
